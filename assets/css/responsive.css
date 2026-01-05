@@ -1,0 +1,218 @@
+/* ============================================
+   RESPONSIVE DESIGN
+   ============================================ */
+
+/* Tablet - 768px a 1024px */
+@media (max-width: 1024px) {
+    :root {
+        --space-xxl: 4rem;
+        --space-xl: 2.5rem;
+    }
+    
+    h1 {
+        font-size: 2.5rem;
+    }
+    
+    h2 {
+        font-size: 2rem;
+    }
+    
+    .hero-section .container {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .hero-content {
+        max-width: 100%;
+    }
+    
+    .hero-buttons {
+        justify-content: center;
+    }
+    
+    .client-logos {
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+}
+
+/* Tablet Pequeno - 600px a 768px */
+@media (max-width: 768px) {
+    :root {
+        --space-xxl: 3rem;
+        --space-xl: 2rem;
+        --space-lg: 1.5rem;
+    }
+    
+    .navbar .container {
+        flex-wrap: wrap;
+    }
+    
+    .menu-toggle {
+        display: block;
+    }
+    
+    .nav-menu {
+        position: fixed;
+        top: 0;
+        right: -100%;
+        width: 80%;
+        max-width: 300px;
+        height: 100vh;
+        background-color: var(--color-white);
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 6rem var(--space-xl) var(--space-xl);
+        box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
+        transition: right var(--transition-normal);
+        z-index: 1000;
+    }
+    
+    .nav-menu.active {
+        right: 0;
+    }
+    
+    .nav-menu li {
+        margin: 0 0 var(--space-lg);
+        width: 100%;
+    }
+    
+    .nav-link {
+        display: block;
+        padding: var(--space-sm) 0;
+        font-size: 1.1rem;
+    }
+    
+    .nav-cta {
+        margin-top: var(--space-lg);
+        width: 100%;
+    }
+    
+    .hero-title {
+        font-size: 2.2rem;
+    }
+    
+    .hero-buttons {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .hero-buttons .btn {
+        width: 100%;
+        max-width: 250px;
+    }
+    
+    .about-cards,
+    .services-cards,
+    .contact-content,
+    .footer-content {
+        grid-template-columns: 1fr;
+    }
+    
+    .client-logos {
+        gap: var(--space-md);
+    }
+    
+    .client-logo {
+        width: 150px;
+        height: 80px;
+    }
+    
+    .footer-bottom {
+        flex-direction: column;
+        text-align: center;
+        gap: var(--space-md);
+    }
+}
+
+/* Mobile - até 600px */
+@media (max-width: 600px) {
+    :root {
+        --space-xxl: 2.5rem;
+    }
+    
+    h1 {
+        font-size: 2rem;
+    }
+    
+    h2 {
+        font-size: 1.75rem;
+    }
+    
+    section {
+        padding: var(--space-xl) 0;
+    }
+    
+    .hero-section {
+        padding-top: 6rem;
+    }
+    
+    .hero-title {
+        font-size: 1.8rem;
+    }
+    
+    .hero-subtitle {
+        font-size: 1rem;
+    }
+    
+    .image-placeholder {
+        height: 250px;
+        font-size: 3rem;
+    }
+    
+    .client-logo {
+        width: 130px;
+        height: 70px;
+        font-size: 0.9rem;
+    }
+    
+    .slider-prev,
+    .slider-next {
+        width: 35px;
+        height: 35px;
+    }
+    
+    .contact-item {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    
+    .contact-icon {
+        margin-bottom: var(--space-sm);
+    }
+    
+    .back-to-top {
+        width: 45px;
+        height: 45px;
+        bottom: var(--space-md);
+        right: var(--space-md);
+    }
+    
+    .error-code {
+        font-size: 6rem;
+    }
+    
+    .error-title {
+        font-size: 1.5rem;
+    }
+}
+
+/* Mobile muito pequeno - até 400px */
+@media (max-width: 400px) {
+    .container {
+        padding: 0 var(--space-sm);
+    }
+    
+    .hero-buttons .btn {
+        max-width: 100%;
+    }
+    
+    .client-logo {
+        width: 100%;
+        max-width: 150px;
+    }
+    
+    .footer-content {
+        gap: var(--space-lg);
+    }
+}
