@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- Meta Tags para SEO -->
+    <title>Portfólio | EngConstruções - Nossas Obras Realizadas</title>
+    <meta name="description" content="Conheça nossos projetos realizados em engenharia civil, construção, reformas e infraestrutura. Galeria de obras executadas com qualidade e excelência.">
+    <meta name="keywords" content="portfólio engenharia, obras realizadas, projetos de construção, galeria de obras, casos de sucesso">
+    <meta name="author" content="EngConstruções">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="assets/images/Logotipo.png">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Open+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/responsive.css">
+    <link rel="stylesheet" href="assets/css/portfolio.css"> <!-- CSS específico do portfólio -->
+    
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Loader -->
+    <div id="loader" class="loader">
+        <div class="loader-spinner"></div>
+        <p>Carregando...</p>
+    </div>
+    
+    <!-- Header / Navegação -->
+    <header id="header">
+        <nav class="navbar">
+            <div class="container">
+                <!-- Logo -->
+                <a href="index.html" class="logo">
+                     <img src="assets/images/Logotipo.png" width="90" height="90">
+                    <div class="logo-text">
+                        <span class="logo-primary">Dois Irmãos</span>
+                        <span class="logo-secondary">Importadora Ltda</span>
+                    </div>
+                </a>
+                
+                <!-- Menu Desktop -->
+                <ul class="nav-menu">
+                    <li><a href="index.html" class="nav-link">Home</a></li>
+                    <li><a href="index.html#about" class="nav-link">Quem Somos</a></li>
+                    <li><a href="index.html#services" class="nav-link">Serviços</a></li>
+                    <li><a href="portfolio.html" class="nav-link active">Portfólio</a></li>
+                    <li><a href="index.html#clients" class="nav-link">Clientes</a></li>
+                    <li><a href="index.html#contact" class="nav-link">Contato</a></li>
+                    <li><a href="index.html#contact" class="btn btn-outline nav-cta">Solicitar Orçamento</a></li>
+                </ul>
+                
+                <!-- Menu Mobile Toggle -->
+                <button class="menu-toggle" aria-label="Abrir menu" aria-expanded="false">
+                    <span class="hamburger"></span>
+                </button>
+            </div>
+        </nav>
+    </header>
+    
+    <!-- Hero Portfólio -->
+    <section class="portfolio-hero">
+        <div class="container">
+            <div class="portfolio-hero-content">
+                <br><h1 class="portfolio-title">Nossas <span class="highlight">Obras Realizadas</span></h1>
+                <p class="portfolio-subtitle">Conheça alguns de nossos projetos executados com excelência, qualidade e compromisso</p>
+                <div class="portfolio-stats">
+                    <div class="stat-item">
+                        <span class="stat-number">150+</span>
+                        <span class="stat-label">Projetos Entregues</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">6</span>
+                        <span class="stat-label">Anos de Experiência</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">98%</span>
+                        <span class="stat-label">Satisfação do Cliente</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Filtros de Categorias -->
+    <section class="portfolio-filters">
+        <div class="container">
+            <div class="filter-buttons">
+                <button class="filter-btn active" data-filter="all">Todos os Projetos</button>
+                <button class="filter-btn" data-filter="obras-publicas">Obras Públicas</button>
+                <button class="filter-btn" data-filter="construcao-civil">Construção Civil</button>
+                <button class="filter-btn" data-filter="reformas">Reformas</button>
+                <button class="filter-btn" data-filter="infraestrutura">Infraestrutura</button>
+                <button class="filter-btn" data-filter="manutencao">Manutenção</button>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Galeria de Projetos -->
+    <section class="portfolio-gallery">
+        <div class="container">
+            <div class="gallery-grid">
+                
+                <!-- Projeto 1: Construção Civil -->
+                <div class="portfolio-item" data-category="construcao-civil">
+                    <div class="portfolio-card">
+                        <div class="portfolio-image">
+                            <img src="assets/images/portfolio/construcao-edificio.jpg" alt="Construção de Edifício Comercial" loading="lazy">
+                            <div class="portfolio-overlay">
+                                <span class="portfolio-category">Construção Civil</span>
+                                <h3 class="portfolio-title">Edifício Comercial</h3>
+                                <p class="portfolio-location">São Paulo, SP</p>
+                            </div>
+                        </div>
+                        <div class="portfolio-info">
+                            <h3>Edifício Comercial Alpha</h3>
+                            <p>Construção de edifício comercial de 12 andares com estrutura metálica e fachada curtain wall.</p>
+                            <div class="portfolio-details">
+                                <span><i class="fas fa-calendar"></i> 18 meses</span>
+                                <span><i class="fas fa-ruler-combined"></i> 8.000 m²</span>
+                                <span><i class="fas fa-users"></i> Cliente Privado</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Projeto 2: Obras Públicas -->
+                <div class="portfolio-item" data-category="obras-publicas">
+                    <div class="portfolio-card">
+                        <div class="portfolio-image">
+                            <img src="assets/images/portfolio/escola-publica.jpg" alt="Construção de Escola Pública" loading="lazy">
+                            <div class="portfolio-overlay">
+                                <span class="portfolio-category">Obras Públicas</span>
+                                <h3 class="portfolio-title">Escola Municipal</h3>
+                                <p class="portfolio-location">Brasília, DF</p>
+                            </div>
+                        </div>
+                        <div class="portfolio-info">
+                            <h3>Escola Municipal Verde</h3>
+                            <p>Construção completa de escola pública com 12 salas de aula, biblioteca e quadra poliesportiva.</p>
+                            <div class="portfolio-details">
+                                <span><i class="fas fa-calendar"></i> 14 meses</span>
+                                <span><i class="fas fa-ruler-combined"></i> 5.200 m²</span>
+                                <span><i class="fas fa-users"></i> Prefeitura</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Projeto 3: Infraestrutura -->
+                <div class="portfolio-item" data-category="infraestrutura">
+                    <div class="portfolio-card">
+                        <div class="portfolio-image">
+                            <img src="assets/images/portfolio/pavimentacao.jpg" alt="Pavimentação Asfáltica" loading="lazy">
+                            <div class="portfolio-overlay">
+                                <span class="portfolio-category">Infraestrutura</span>
+                                <h3 class="portfolio-title">Pavimentação Urbana</h3>
+                                <p class="portfolio-location">Goiânia, GO</p>
+                            </div>
+                        </div>
+                        <div class="portfolio-info">
+                            <h3>Pavimentação Avenida Central</h3>
+                            <p>Pavimentação asfáltica de 3km com drenagem pluvial e sinalização viária completa.</p>
+                            <div class="portfolio-details">
+                                <span><i class="fas fa-calendar"></i> 6 meses</span>
+                                <span><i class="fas fa-road"></i> 3.000 m</span>
+                                <span><i class="fas fa-users"></i> Governo Estadual</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Projeto 4: Reformas -->
+                <div class="portfolio-item" data-category="reformas">
+                    <div class="portfolio-card">
+                        <div class="portfolio-image">
+                            <img src="assets/images/portfolio/reforma-predial.jpg" alt="Reforma de Prédio Histórico" loading="lazy">
+                            <div class="portfolio-overlay">
+                                <span class="portfolio-category">Reformas</span>
+                                <h3 class="portfolio-title">Reforma Estrutural</h3>
+                                <p class="portfolio-location">Rio de Janeiro, RJ</p>
+                            </div>
+                        </div>
+                        <div class="portfolio-info">
+                            <h3>Prédio Histórico Restaurado</h3>
+                            <p>Reforma estrutural completa com preservação da fachada histórica e modernização interna.</p>
+                            <div class="portfolio-details">
+                                <span><i class="fas fa-calendar"></i> 10 meses</span>
+                                <span><i class="fas fa-ruler-combined"></i> 3.500 m²</span>
+                                <span><i class="fas fa-users"></i> Empresa Privada</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Projeto 5: Manutenção -->
+                <div class="portfolio-item" data-category="manutencao">
+                    <div class="portfolio-card">
+                        <div class="portfolio-image">
+                            <img src="assets/images/portfolio/manutencao-shopping.jpg" alt="Manutenção de Shopping Center" loading="lazy">
+                            <div class="portfolio-overlay">
+                                <span class="portfolio-category">Manutenção</span>
+                                <h3 class="portfolio-title">Manutenção Predial</h3>
+                                <p class="portfolio-location">Curitiba, PR</p>
+                            </div>
+                        </div>
+                        <div class="portfolio-info">
+                            <h3>Shopping Center Metrópole</h3>
+                            <p>Contrato de manutenção predial preventiva e corretiva com equipe técnica especializada.</p>
+                            <div class="portfolio-details">
+                                <span><i class="fas fa-calendar"></i> Contrato anual</span>
+                                <span><i class="fas fa-ruler-combined"></i> 45.000 m²</span>
+                                <span><i class="fas fa-users"></i> Rede de Shoppings</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Projeto 6: Infraestrutura -->
+                <div class="portfolio-item" data-category="infraestrutura">
+                    <div class="portfolio-card">
+                        <div class="portfolio-image">
+                            <img src="assets/images/portfolio/drenagem.jpg" alt="Sistema de Drenagem Pluvial" loading="lazy">
+                            <div class="portfolio-overlay">
+                                <span class="portfolio-category">Infraestrutura</span>
+                                <h3 class="portfolio-title">Drenagem Urbana</h3>
+                                <p class="portfolio-location">Belo Horizonte, MG</p>
+                            </div>
+                        </div>
+                        <div class="portfolio-info">
+                            <h3>Sistema de Drenagem Pluvial</h3>
+                            <p>Instalação de sistema completo de drenagem para prevenção de enchentes em área urbana.</p>
+                            <div class="portfolio-details">
+                                <span><i class="fas fa-calendar"></i> 8 meses</span>
+                                <span><i class="fas fa-water"></i> 2,5 km</span>
+                                <span><i class="fas fa-users"></i> Prefeitura</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Projeto 7: Construção Civil -->
+                <div class="portfolio-item" data-category="construcao-civil">
+                    <div class="portfolio-card">
+                        <div class="portfolio-image">
+                            <img src="assets/images/portfolio/hospital.jpg" alt="Construção de Hospital" loading="lazy">
+                            <div class="portfolio-overlay">
+                                <span class="portfolio-category">Construção Civil</span>
+                                <h3 class="portfolio-title">Hospital Regional</h3>
+                                <p class="portfolio-location">Fortaleza, CE</p>
+                            </div>
+                        </div>
+                        <div class="portfolio-info">
+                            <h3>Hospital Municipal</h3>
+                            <p>Construção de hospital com 200 leitos, centro cirúrgico e emergência 24h.</p>
+                            <div class="portfolio-details">
+                                <span><i class="fas fa-calendar"></i> 24 meses</span>
+                                <span><i class="fas fa-ruler-combined"></i> 15.000 m²</span>
+                                <span><i class="fas fa-users"></i> Governo Estadual</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Projeto 8: Obras Públicas -->
+                <div class="portfolio-item" data-category="obras-publicas">
+                    <div class="portfolio-card">
+                        <div class="portfolio-image">
+                            <img src="assets/images/portfolio/ponte.jpg" alt="Construção de Ponte" loading="lazy">
+                            <div class="portfolio-overlay">
+                                <span class="portfolio-category">Obras Públicas</span>
+                                <h3 class="portfolio-title">Ponte Rodoviária</h3>
+                                <p class="portfolio-location">Porto Alegre, RS</p>
+                            </div>
+                        </div>
+                        <div class="portfolio-info">
+                            <h3>Ponte sobre o Rio</h3>
+                            <p>Construção de ponte rodoviária de 180m com estrutura em concreto protendido.</p>
+                            <div class="portfolio-details">
+                                <span><i class="fas fa-calendar"></i> 16 meses</span>
+                                <span><i class="fas fa-ruler-combined"></i> 180 m</span>
+                                <span><i class="fas fa-users"></i> DNIT</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Projeto 9: Reformas -->
+                <div class="portfolio-item" data-category="reformas">
+                    <div class="portfolio-card">
+                        <div class="portfolio-image">
+                            <img src="assets/images/portfolio/impermeabilizacao.jpg" alt="Impermeabilização de Laje" loading="lazy">
+                            <div class="portfolio-overlay">
+                                <span class="portfolio-category">Reformas</span>
+                                <h3 class="portfolio-title">Impermeabilização</h3>
+                                <p class="portfolio-location">Salvador, BA</p>
+                            </div>
+                        </div>
+                        <div class="portfolio-info">
+                            <h3>Condomínio Residencial</h3>
+                            <p>Serviço completo de impermeabilização de lajes e áreas molhadas em condomínio vertical.</p>
+                            <div class="portfolio-details">
+                                <span><i class="fas fa-calendar"></i> 3 meses</span>
+                                <span><i class="fas fa-ruler-combined"></i> 2.800 m²</span>
+                                <span><i class="fas fa-users"></i> Condomínio</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <!-- Botão Ver Mais -->
+            <div class="portfolio-load-more">
+                <button id="loadMore" class="btn btn-outline">
+                    <i class="fas fa-plus"></i> Ver Mais Projetos
+                </button>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Modal para imagens ampliadas -->
+    <div id="portfolioModal" class="portfolio-modal">
+        <div class="modal-content">
+            <button class="modal-close" aria-label="Fechar modal">
+                <i class="fas fa-times"></i>
+            </button>
+            <div class="modal-image-container">
+                <img id="modalImage" src="" alt="">
+            </div>
+            <div class="modal-info">
+                <h3 id="modalTitle"></h3>
+                <p id="modalDescription"></p>
+                <div class="modal-details" id="modalDetails"></div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- CTA Final -->
+    <section class="portfolio-cta">
+        <div class="container">
+            <div class="cta-content">
+                <h2>Quer ver seu projeto aqui?</h2>
+                <p>Trabalhamos com compromisso, qualidade e excelência para entregar o melhor resultado.</p>
+                <a href="index.html#contact" class="btn btn-primary">
+                    <i class="fas fa-calendar-check"></i> Solicitar Orçamento
+                </a>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <a href="index.html" class="logo">
+                        <img src="assets/images/Logotipo.png" width="180" height="180">
+                        <div class="logo-text">
+                            <span class="logo-primary">Dois Irmãos</span>
+                            <span class="logo-secondary">Importadora Ltda</span>
+                        </div>
+                    </a>
+                    <p class="footer-description">Excelência em engenharia civil e infraestrutura há mais de 6 anos.</p>
+                    <div class="social-links">
+                        <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="#" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+                        <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-links">
+                    <h4>Links rápidos</h4>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="index.html#about">Quem Somos</a></li>
+                        <li><a href="index.html#services">Serviços</a></li>
+                        <li><a href="portfolio.html">Portfólio</a></li>
+                        <li><a href="index.html#clients">Clientes</a></li>
+                        <li><a href="index.html#contact">Contato</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-services">
+                    <h4>Nossos serviços</h4>
+                    <ul>
+                        <li><a href="index.html#services">Obras Públicas</a></li>
+                        <li><a href="index.html#services">Construção Civil</a></li>
+                        <li><a href="index.html#services">Reformas</a></li>
+                        <li><a href="index.html#services">Manutenção Predial</a></li>
+                        <li><a href="index.html#services">Infraestrutura</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-contact">
+                    <h4>Contato</h4>
+                    <ul>
+                        <li><i class="fas fa-map-marker-alt"></i> CBS 4 LT 3 EDIFICIO OURO PRETO - Galeria Sala 5 - Brasília/DF</li>
+                        <li><i class="fas fa-phone"></i> (61) 98408-6315</li>
+                        <li><i class="fas fa-envelope"></i> dlengenhariaeireli25@hotmail.com</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <div class="footer-legal">
+                    <p>DOIS IRMÃOS Importadora Ltda. | CNPJ: 42.893.478/0001-38</p>
+                    <p>&copy; <span id="currentYear"></span> Dois irmãos Importadora LTDA. Todos os direitos reservados.</p>
+                </div>
+                <div class="footer-extras">
+                    <a href="#">Política de Privacidade</a>
+                    <a href="#">Termos de Uso</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+    
+    <!-- Back to Top Button -->
+    <button id="backToTop" class="back-to-top" aria-label="Voltar ao topo">
+        <i class="fas fa-chevron-up"></i>
+    </button>
+    
+    <!-- Botão WhatsApp -->
+    <a href="https://wa.me/556184086315?text=Olá! Gostaria de ver mais projetos do portfólio." 
+       class="whatsapp-btn" 
+       target="_blank" 
+       rel="noopener noreferrer"
+       aria-label="Conversar no WhatsApp">
+        <i class="fab fa-whatsapp"></i>
+        <span class="whatsapp-tooltip">Fale conosco no WhatsApp</span>
+    </a>
+    
+    <!-- JavaScript -->
+    <script src="assets/js/main.js"></script>
+    <script src="assets/js/portfolio.js"></script>
+</body>
+</html>
