@@ -1,5 +1,5 @@
 /* ============================================
-   RESET E CONFIGURAÇÕES GERAIS
+   RESET E VARIÁVEIS CORRIGIDAS
    ============================================ */
 
 * {
@@ -9,15 +9,18 @@
 }
 
 :root {
-    /* Paleta de cores - Sóbria e profissional */
-    --color-primary: #000000;       /* Preto profundo */
-    --color-secondary: #c9a74d;     /* Dourado */
-    --color-accent: #c9a74d;        /* Azul escuro */
-    --color-light: #f8f9fa;         /* Branco suave */
-    --color-gray: #6c757d;          /* Cinza médio */
-    --color-dark-gray: #343a40;     /* Cinza escuro */
-    --color-white: #ffffff;
-    --color-background-footer: #343a40;
+    /* Paleta de cores - Tema escuro sofisticado */
+    --color-primary: #ffffff;           /* Branco para textos principais */
+    --color-secondary: #d4b55b;         /* Dourado refinado */
+    --color-accent: #3a506b;            /* Azul escuro sofisticado */
+    --color-light: #1a1a1a;             /* Preto profundo para fundos claros */
+    --color-dark: #0a0a0a;              /* Preto quase sólido */
+    --color-gray: #adb5bd;              /* Cinza claro para textos secundários */
+    --color-dark-gray: #e9ecef;         /* Cinza muito claro para títulos */
+    --color-bg: #121212;                /* Background principal */
+    --color-card: #1e1e1e;              /* Fundo de cards e seções */
+    --color-border: #2d2d2d;            /* Bordas e divisórias */
+    --color-hover: #2a2a2a;             /* Estados hover */
     
     /* Tipografia */
     --font-heading: 'Montserrat', sans-serif;
@@ -35,15 +38,21 @@
     --border-radius: 4px;
     --border-radius-lg: 8px;
     
-    /* Sombras */
-    --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.1);
-    --shadow-md: 0 4px 8px rgba(0, 0, 0, 0.1);
-    --shadow-lg: 0 8px 16px rgba(0, 0, 0, 0.1);
+    /* Sombras - Ajustadas para tema escuro */
+    --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.3);
+    --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.4);
+    --shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.5);
+    --shadow-gold: 0 4px 15px rgba(212, 181, 91, 0.2);
     
     /* Transições */
     --transition-fast: 0.2s ease;
     --transition-normal: 0.3s ease;
     --transition-slow: 0.5s ease;
+    
+    /* Gradientes */
+    --gradient-primary: linear-gradient(135deg, #1a1a1a 0%, #121212 100%);
+    --gradient-secondary: linear-gradient(135deg, var(--color-secondary) 0%, #b8942a 100%);
+    --gradient-card: linear-gradient(145deg, #1e1e1e 0%, #252525 100%);
 }
 
 html {
@@ -53,10 +62,11 @@ html {
 
 body {
     font-family: var(--font-body);
-    color: var(--color-dark-gray);
-    background-color: var(--color-white);
+    color: var(--color-gray);
+    background-color: var(--color-bg);
     line-height: 1.6;
     overflow-x: hidden;
+    min-height: 100vh;
 }
 
 .container {
@@ -68,10 +78,26 @@ body {
 
 section {
     padding: var(--space-xxl) 0;
+    position: relative;
+}
+
+/* Overlay sutil para profundidade */
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: 
+        radial-gradient(circle at 20% 50%, rgba(212, 181, 91, 0.05) 0%, transparent 50%),
+        radial-gradient(circle at 80% 20%, rgba(58, 80, 107, 0.03) 0%, transparent 50%);
+    pointer-events: none;
+    z-index: -1;
 }
 
 /* ============================================
-   TIPOGRAFIA
+   TIPOGRAFIA CORRIGIDA
    ============================================ */
 
 h1, h2, h3, h4, h5, h6 {
@@ -89,22 +115,38 @@ h1 {
 
 h2 {
     font-size: 2.25rem;
+    position: relative;
+    display: inline-block;
+}
+
+h2::after {
+    content: '';
+    position: absolute;
+    bottom: -8px;
+    left: 0;
+    width: 60px;
+    height: 3px;
+    background: var(--gradient-secondary);
+    border-radius: 2px;
 }
 
 h3 {
     font-size: 1.5rem;
+    color: var(--color-dark-gray);
 }
 
 p {
     margin-bottom: var(--space-md);
+    color: var(--color-gray);
 }
 
 .highlight {
     color: var(--color-secondary);
+    font-weight: 700;
 }
 
 /* ============================================
-   LOADER
+   LOADER CORRIGIDO
    ============================================ */
 
 .loader {
@@ -113,7 +155,7 @@ p {
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: var(--color-white);
+    background-color: var(--color-bg);
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -142,7 +184,7 @@ p {
 }
 
 /* ============================================
-   HEADER / NAVEGAÇÃO
+   HEADER CORRIGIDO
    ============================================ */
 
 header {
@@ -150,14 +192,16 @@ header {
     top: 0;
     left: 0;
     width: 100%;
-    background-color: var(--color-white);
-    box-shadow: var(--shadow-sm);
+    background-color: rgba(18, 18, 18, 0.95);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--color-border);
     z-index: 1000;
     transition: all var(--transition-normal);
 }
 
 header.scrolled {
-    padding: 0;
+    background-color: rgba(26, 26, 26, 0.98);
     box-shadow: var(--shadow-md);
 }
 
@@ -171,7 +215,7 @@ header.scrolled {
     align-items: center;
 }
 
-/* Logo */
+/* Logo CORRIGIDO */
 .logo {
     display: flex;
     align-items: center;
@@ -182,6 +226,7 @@ header.scrolled {
 .logo-icon {
     font-size: 1.8rem;
     margin-right: var(--space-xs);
+    color: var(--color-secondary);
 }
 
 .logo-text {
@@ -200,7 +245,7 @@ header.scrolled {
     color: var(--color-secondary);
 }
 
-/* Menu Desktop */
+/* Menu Desktop CORRIGIDO */
 .nav-menu {
     display: flex;
     list-style: none;
@@ -213,10 +258,11 @@ header.scrolled {
 
 .nav-link {
     text-decoration: none;
-    color: var(--color-dark-gray);
+    color: var(--color-gray);
     font-weight: 500;
-    transition: color var(--transition-fast);
+    transition: all var(--transition-fast);
     position: relative;
+    padding: 8px 0;
 }
 
 .nav-link:hover {
@@ -230,54 +276,15 @@ header.scrolled {
 .nav-link.active::after {
     content: '';
     position: absolute;
-    bottom: -5px;
+    bottom: 0;
     left: 0;
     width: 100%;
     height: 2px;
-    background-color: var(--color-secondary);
+    background: var(--gradient-secondary);
+    border-radius: 2px;
 }
 
-/* Botões */
-.btn {
-    display: inline-block;
-    padding: 0.75rem 1.5rem;
-    border-radius: var(--border-radius);
-    font-weight: 600;
-    text-decoration: none;
-    cursor: pointer;
-    transition: all var(--transition-fast);
-    border: 2px solid transparent;
-    text-align: center;
-}
-
-.btn-primary {
-    background-color: var(--color-secondary);
-    color: var(--color-white);
-}
-
-.btn-primary:hover {
-    background-color: #b8942a;
-    transform: translateY(-2px);
-    box-shadow: var(--shadow-md);
-}
-
-.btn-outline {
-    background-color: transparent;
-    color: var(--color-secondary);
-    border-color: var(--color-secondary);
-}
-
-.btn-outline:hover {
-    background-color: var(--color-secondary);
-    color: var(--color-white);
-    transform: translateY(-2px);
-}
-
-.btn-full {
-    width: 100%;
-}
-
-/* Menu Mobile Toggle */
+/* Menu Mobile Toggle CORRIGIDO */
 .menu-toggle {
     display: none;
     background: none;
@@ -331,12 +338,55 @@ header.scrolled {
 }
 
 /* ============================================
-   HERO SECTION
+   BOTÕES CORRIGIDOS
+   ============================================ */
+
+.btn {
+    display: inline-block;
+    padding: 0.75rem 1.5rem;
+    border-radius: var(--border-radius);
+    font-weight: 600;
+    text-decoration: none;
+    cursor: pointer;
+    transition: all var(--transition-fast);
+    border: none;
+    text-align: center;
+}
+
+.btn-primary {
+    background: var(--gradient-secondary);
+    color: var(--color-dark);
+    box-shadow: var(--shadow-gold);
+}
+
+.btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(212, 181, 91, 0.3);
+}
+
+.btn-outline {
+    background-color: transparent;
+    color: var(--color-secondary);
+    border: 2px solid var(--color-secondary);
+}
+
+.btn-outline:hover {
+    background-color: rgba(212, 181, 91, 0.1);
+    transform: translateY(-2px);
+}
+
+.btn-full {
+    width: 100%;
+}
+
+/* ============================================
+   HERO SECTION CORRIGIDA
    ============================================ */
 
 .hero-section {
     padding-top: 8rem;
-    background-color: var(--color-light);
+    background: var(--gradient-primary);
+    position: relative;
     overflow: hidden;
 }
 
@@ -345,6 +395,8 @@ header.scrolled {
     align-items: center;
     justify-content: space-between;
     gap: var(--space-xl);
+    position: relative;
+    z-index: 1;
 }
 
 .hero-content {
@@ -377,25 +429,26 @@ header.scrolled {
 .image-placeholder {
     width: 100%;
     height: 350px;
-    background-color: var(--color-accent);
+    background: linear-gradient(135deg, var(--color-accent) 0%, #2c3e50 100%);
     border-radius: var(--border-radius-lg);
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    color: var(--color-white);
+    color: var(--color-primary);
     font-size: 4rem;
     box-shadow: var(--shadow-lg);
+    border: 1px solid var(--color-border);
 }
 
 .image-placeholder p {
     margin-top: var(--space-md);
     font-size: 1rem;
-    color: rgba(255, 255, 255, 0.8);
+    color: var(--color-gray);
 }
 
 /* ============================================
-   SEÇÃO GERAL
+   SEÇÕES GERAIS CORRIGIDAS
    ============================================ */
 
 .section-header {
@@ -420,13 +473,27 @@ header.scrolled {
 .divider {
     width: 60px;
     height: 3px;
-    background-color: var(--color-secondary);
+    background: var(--gradient-secondary);
     margin: 0 auto;
+    border-radius: 2px;
+}
+
+.section-description {
+    text-align: center;
+    max-width: 800px;
+    margin: 0 auto var(--space-xl);
+    color: var(--color-gray);
+    font-size: 1.1rem;
+    line-height: 1.7;
 }
 
 /* ============================================
-   QUEM SOMOS
+   QUEM SOMOS CORRIGIDO
    ============================================ */
+
+.about-section {
+    background-color: var(--color-card);
+}
 
 .about-content {
     display: flex;
@@ -449,12 +516,13 @@ header.scrolled {
 }
 
 .about-card {
-    background-color: var(--color-white);
+    background: var(--gradient-card);
     border-radius: var(--border-radius-lg);
     padding: var(--space-xl);
     text-align: center;
     box-shadow: var(--shadow-md);
-    transition: transform var(--transition-normal), box-shadow var(--transition-normal);
+    transition: all var(--transition-normal);
+    border: 1px solid var(--color-border);
 }
 
 .about-card:hover {
@@ -465,7 +533,7 @@ header.scrolled {
 .about-card .card-icon {
     width: 70px;
     height: 70px;
-    background-color: rgba(201, 167, 77, 0.1);
+    background: rgba(212, 181, 91, 0.1);
     border-radius: 50%;
     display: flex;
     align-items: center;
@@ -473,24 +541,15 @@ header.scrolled {
     margin: 0 auto var(--space-lg);
     color: var(--color-secondary);
     font-size: 1.8rem;
+    border: 1px solid rgba(212, 181, 91, 0.2);
 }
 
 /* ============================================
-   SEÇÃO SERVIÇOS - ATUALIZADA PARA 9 CARDS
+   SERVIÇOS CORRIGIDOS
    ============================================ */
 
 .services-section {
     background-color: var(--color-light);
-    position: relative;
-}
-
-.section-description {
-    text-align: center;
-    max-width: 800px;
-    margin: 0 auto var(--space-xl);
-    color: var(--color-gray);
-    font-size: 1.1rem;
-    line-height: 1.7;
 }
 
 .services-cards {
@@ -501,26 +560,27 @@ header.scrolled {
 }
 
 .service-card {
-    background-color: var(--color-white);
+    background: var(--gradient-card);
     border-radius: var(--border-radius-lg);
     padding: var(--space-xl);
     box-shadow: var(--shadow-md);
     transition: all var(--transition-normal);
+    border: 1px solid var(--color-border);
     display: flex;
     flex-direction: column;
     height: 100%;
-    border-top: 4px solid var(--color-secondary);
 }
 
 .service-card:hover {
     transform: translateY(-10px);
     box-shadow: var(--shadow-lg);
+    border-color: var(--color-secondary);
 }
 
 .service-icon {
     width: 60px;
     height: 60px;
-    background-color: rgba(201, 167, 77, 0.1);
+    background: rgba(212, 181, 91, 0.1);
     border-radius: var(--border-radius);
     display: flex;
     align-items: center;
@@ -528,6 +588,7 @@ header.scrolled {
     margin-bottom: var(--space-lg);
     color: var(--color-secondary);
     font-size: 1.5rem;
+    border: 1px solid rgba(212, 181, 91, 0.2);
 }
 
 .service-card h3 {
@@ -548,7 +609,7 @@ header.scrolled {
     list-style: none;
     margin-top: var(--space-md);
     padding-top: var(--space-md);
-    border-top: 1px solid rgba(0, 0, 0, 0.1);
+    border-top: 1px solid var(--color-border);
 }
 
 .service-list li {
@@ -556,7 +617,7 @@ header.scrolled {
     display: flex;
     align-items: flex-start;
     font-size: 0.9rem;
-    color: var(--color-dark-gray);
+    color: var(--color-gray);
 }
 
 .service-list li i {
@@ -572,7 +633,7 @@ header.scrolled {
     text-align: center;
     margin-top: var(--space-xl);
     padding: var(--space-lg);
-    background-color: rgba(201, 167, 77, 0.05);
+    background: rgba(212, 181, 91, 0.05);
     border-radius: var(--border-radius-lg);
     border-left: 4px solid var(--color-secondary);
 }
@@ -595,38 +656,8 @@ header.scrolled {
     flex-shrink: 0;
 }
 
-/* Responsividade para tablets */
-@media (max-width: 1024px) {
-    .services-cards {
-        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-        gap: 25px;
-    }
-    
-    .commitment-text {
-        flex-direction: column;
-        text-align: center;
-        gap: var(--space-sm);
-    }
-}
-
-/* Responsividade para mobile */
-@media (max-width: 768px) {
-    .services-cards {
-        grid-template-columns: 1fr;
-        gap: 20px;
-    }
-    
-    .service-card {
-        padding: var(--space-lg);
-    }
-    
-    .commitment-text {
-        font-size: 1rem;
-    }
-}
-
 /* ============================================
-   CLIENTES
+   CLIENTES CORRIGIDOS
    ============================================ */
 
 .clients-grid {
@@ -662,107 +693,302 @@ header.scrolled {
 }
 
 /* ============================================
-   CONTATO
+   CONTATO DIRETO - ESTILOS
    ============================================ */
 
-.contact-content {
+.contact-direct {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: var(--space-xl);
+    gap: 30px;
+    margin-bottom: 60px;
 }
 
-.contact-info h3,
-.contact-form h3 {
-    margin-bottom: var(--space-lg);
-}
-
-.contact-item {
+.contact-card {
+    background: var(--gradient-card);
+    border-radius: var(--border-radius-lg);
+    padding: 30px;
+    text-align: center;
+    border: 1px solid var(--color-border);
+    transition: all var(--transition-normal);
     display: flex;
-    align-items: flex-start;
-    margin-bottom: var(--space-lg);
+    flex-direction: column;
+    align-items: center;
 }
 
-.contact-icon {
-    width: 50px;
-    height: 50px;
-    background-color: rgba(201, 167, 77, 0.1);
-    border-radius: var(--border-radius);
+.contact-card:hover {
+    transform: translateY(-10px);
+    box-shadow: var(--shadow-lg);
+    border-color: var(--color-secondary);
+}
+
+.whatsapp-card:hover {
+    border-color: #25d366;
+}
+
+.phone-card:hover {
+    border-color: var(--color-secondary);
+}
+
+.email-card:hover {
+    border-color: #3a506b;
+}
+
+.contact-card-icon {
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-right: var(--space-md);
+    margin-bottom: 20px;
+    font-size: 1.8rem;
+}
+
+.whatsapp-card .contact-card-icon {
+    background: rgba(37, 211, 102, 0.1);
+    color: #25d366;
+    border: 2px solid rgba(37, 211, 102, 0.2);
+}
+
+.phone-card .contact-card-icon {
+    background: rgba(212, 181, 91, 0.1);
     color: var(--color-secondary);
-    font-size: 1.2rem;
-    flex-shrink: 0;
+    border: 2px solid rgba(212, 181, 91, 0.2);
 }
 
-.contact-details h4 {
-    margin-bottom: var(--space-xs);
-    font-size: 1.1rem;
+.email-card .contact-card-icon {
+    background: rgba(58, 80, 107, 0.1);
+    color: #3a506b;
+    border: 2px solid rgba(58, 80, 107, 0.2);
 }
 
-/* Formulário */
-.form-group {
-    margin-bottom: var(--space-lg);
-}
-
-.form-group label {
-    display: block;
-    margin-bottom: var(--space-xs);
-    font-weight: 600;
+.contact-card h3 {
+    font-size: 1.5rem;
+    margin-bottom: 15px;
     color: var(--color-primary);
 }
 
-.form-group input,
-.form-group select,
-.form-group textarea {
+.contact-card-text {
+    color: var(--color-gray);
+    margin-bottom: 20px;
+    line-height: 1.6;
+    flex-grow: 1;
+}
+
+/* WhatsApp Button */
+.btn-whatsapp {
+    background: linear-gradient(135deg, #25d366 0%, #128C7E 100%);
+    color: white;
+    border: none;
+    margin-top: 20px;
+}
+
+.btn-whatsapp:hover {
+    background: linear-gradient(135deg, #128C7E 0%, #25d366 100%);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(37, 211, 102, 0.3);
+}
+
+/* Phone Numbers */
+.phone-numbers {
     width: 100%;
-    padding: 0.75rem;
-    border: 1px solid #ddd;
-    border-radius: var(--border-radius);
-    font-family: var(--font-body);
-    font-size: 1rem;
-    transition: border-color var(--transition-fast);
+    margin: 20px 0;
 }
 
-.form-group input:focus,
-.form-group select:focus,
-.form-group textarea:focus {
-    outline: none;
-    border-color: var(--color-secondary);
-    box-shadow: 0 0 0 2px rgba(201, 167, 77, 0.2);
-}
-
-.error-message {
-    color: #dc3545;
-    font-size: 0.875rem;
-    margin-top: 0.25rem;
-    display: none;
-}
-
-.form-success {
-    background-color: #d4edda;
-    color: #155724;
-    padding: var(--space-md);
-    border-radius: var(--border-radius);
-    margin-top: var(--space-md);
+.phone-item {
     display: flex;
     align-items: center;
+    gap: 15px;
+    padding: 12px;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: var(--border-radius);
+    margin-bottom: 10px;
+    transition: background var(--transition-fast);
 }
 
-.form-success i {
-    font-size: 1.5rem;
-    margin-right: var(--space-sm);
+.phone-item:hover {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.phone-item i {
+    font-size: 1.2rem;
+    color: var(--color-secondary);
+    width: 24px;
+}
+
+.phone-item i.fa-whatsapp {
+    color: #25d366;
+}
+
+.phone-label {
+    display: block;
+    font-size: 0.85rem;
+    color: var(--color-gray);
+    margin-bottom: 4px;
+}
+
+.phone-number {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--color-primary);
+    text-decoration: none;
+    transition: color var(--transition-fast);
+}
+
+.phone-number:hover {
+    color: var(--color-secondary);
+}
+
+/* Email Info */
+.email-info {
+    width: 100%;
+    margin: 20px 0;
+}
+
+.email-item {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 12px;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: var(--border-radius);
+    margin-bottom: 10px;
+}
+
+.email-item i {
+    font-size: 1.2rem;
+    color: #3a506b;
+    width: 24px;
+}
+
+.email-label {
+    display: block;
+    font-size: 0.85rem;
+    color: var(--color-gray);
+    margin-bottom: 4px;
+}
+
+.email-address {
+    font-size: 0.95rem;
+    color: var(--color-primary);
+    text-decoration: none;
+    word-break: break-all;
+}
+
+.email-address:hover {
+    color: #3a506b;
+    text-decoration: underline;
+}
+
+.email-response {
+    font-size: 0.95rem;
+    color: var(--color-secondary);
+    font-weight: 500;
+}
+
+/* Informações Adicionais */
+.contact-additional {
+    margin: 60px 0;
+}
+
+.additional-info {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+}
+
+.info-item {
+    display: flex;
+    gap: 20px;
+    padding: 25px;
+    background: var(--gradient-card);
+    border-radius: var(--border-radius-lg);
+    border: 1px solid var(--color-border);
+}
+
+.info-item i {
+    font-size: 1.8rem;
+    color: var(--color-secondary);
+    margin-top: 5px;
+}
+
+.info-item h4 {
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+    color: var(--color-primary);
+}
+
+.info-item p {
+    color: var(--color-gray);
+    margin-bottom: 8px;
+    font-size: 0.95rem;
+}
+
+.info-item p strong {
+    color: var(--color-dark-gray);
+}
+
+/* CTA Final */
+.contact-cta {
+    text-align: center;
+    padding: 40px;
+    background: linear-gradient(135deg, rgba(212, 181, 91, 0.1) 0%, rgba(58, 80, 107, 0.05) 100%);
+    border-radius: var(--border-radius-lg);
+    border: 1px solid var(--color-border);
+    margin-top: 40px;
+}
+
+.contact-cta h3 {
+    font-size: 1.8rem;
+    margin-bottom: 15px;
+    color: var(--color-primary);
+}
+
+.contact-cta p {
+    color: var(--color-gray);
+    max-width: 600px;
+    margin: 0 auto 25px;
+    font-size: 1.1rem;
+}
+
+.btn-lg {
+    padding: 15px 40px;
+    font-size: 1.1rem;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    .contact-direct {
+        grid-template-columns: 1fr;
+    }
+    
+    .additional-info {
+        grid-template-columns: 1fr;
+    }
+    
+    .info-item {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .contact-cta {
+        padding: 30px 20px;
+    }
+    
+    .contact-cta h3 {
+        font-size: 1.5rem;
+    }
 }
 
 /* ============================================
-   FOOTER
+   FOOTER CORRIGIDO
    ============================================ */
 
 .footer {
-    background-color: var(--color-background-footer);
-    color: var(--color-white);
+    background-color: var(--color-dark);
+    color: var(--color-gray);
     padding: var(--space-xxl) 0 var(--space-lg);
+    border-top: 1px solid var(--color-border);
 }
 
 .footer-content {
@@ -773,7 +999,7 @@ header.scrolled {
 }
 
 .footer h4 {
-    color: var(--color-white);
+    color: var(--color-primary);
     margin-bottom: var(--space-lg);
     font-size: 1.2rem;
     position: relative;
@@ -786,7 +1012,7 @@ header.scrolled {
     left: 0;
     width: 40px;
     height: 2px;
-    background-color: var(--color-secondary);
+    background: var(--gradient-secondary);
 }
 
 .footer-brand .logo {
@@ -794,7 +1020,7 @@ header.scrolled {
 }
 
 .footer-description {
-    color: rgba(255, 255, 255, 0.7);
+    color: var(--color-gray);
     margin-bottom: var(--space-md);
 }
 
@@ -809,16 +1035,19 @@ header.scrolled {
     justify-content: center;
     width: 36px;
     height: 36px;
-    background-color: rgba(255, 255, 255, 0.1);
+    background: var(--gradient-card);
     border-radius: 50%;
-    color: var(--color-white);
+    color: var(--color-gray);
     text-decoration: none;
     transition: all var(--transition-fast);
+    border: 1px solid var(--color-border);
 }
 
 .social-links a:hover {
-    background-color: var(--color-secondary);
+    background: var(--gradient-secondary);
+    color: var(--color-dark);
     transform: translateY(-3px);
+    border-color: var(--color-secondary);
 }
 
 .footer ul {
@@ -830,7 +1059,7 @@ header.scrolled {
 }
 
 .footer ul li a {
-    color: rgba(255, 255, 255, 0.7);
+    color: var(--color-gray);
     text-decoration: none;
     transition: color var(--transition-fast);
 }
@@ -852,7 +1081,7 @@ header.scrolled {
 
 .footer-bottom {
     padding-top: var(--space-lg);
-    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    border-top: 1px solid var(--color-border);
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -861,7 +1090,7 @@ header.scrolled {
 }
 
 .footer-legal p {
-    color: rgba(255, 255, 255, 0.6);
+    color: var(--color-gray);
     font-size: 0.9rem;
     margin-bottom: 0.25rem;
 }
@@ -872,7 +1101,7 @@ header.scrolled {
 }
 
 .footer-extras a {
-    color: rgba(255, 255, 255, 0.6);
+    color: var(--color-gray);
     text-decoration: none;
     font-size: 0.9rem;
     transition: color var(--transition-fast);
@@ -883,7 +1112,7 @@ header.scrolled {
 }
 
 /* ============================================
-   BACK TO TOP BUTTON
+   BOTÕES ESPECIAIS CORRIGIDOS
    ============================================ */
 
 .back-to-top {
@@ -893,8 +1122,8 @@ header.scrolled {
     width: 50px;
     height: 50px;
     border-radius: 50%;
-    background-color: var(--color-secondary);
-    color: var(--color-white);
+    background: var(--gradient-secondary);
+    color: var(--color-dark);
     border: none;
     cursor: pointer;
     display: flex;
@@ -916,47 +1145,9 @@ header.scrolled {
 }
 
 .back-to-top:hover {
-    background-color: #b8942a;
     transform: translateY(-3px);
+    box-shadow: 0 6px 20px rgba(212, 181, 91, 0.3);
 }
-
-/* ============================================
-   PÁGINA 404
-   ============================================ */
-
-.page-404 {
-    min-height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    background-color: var(--color-light);
-    padding: var(--space-xxl) 0;
-}
-
-.error-code {
-    font-size: 8rem;
-    font-weight: 700;
-    color: var(--color-secondary);
-    line-height: 1;
-    margin-bottom: var(--space-md);
-}
-
-.error-title {
-    font-size: 2rem;
-    margin-bottom: var(--space-md);
-}
-
-.error-description {
-    font-size: 1.1rem;
-    color: var(--color-gray);
-    max-width: 600px;
-    margin: 0 auto var(--space-xl);
-}
-
-/* ============================================
-   BOTÃO DO WHATSAPP FLUTUANTE
-   ============================================ */
 
 .whatsapp-btn {
     position: fixed;
@@ -964,7 +1155,7 @@ header.scrolled {
     right: 25px;
     width: 60px;
     height: 60px;
-    background-color: #25d366; /* Cor oficial do WhatsApp */
+    background: linear-gradient(135deg, #25d366 0%, #128C7E 100%);
     border-radius: 50%;
     display: flex;
     align-items: center;
@@ -975,60 +1166,63 @@ header.scrolled {
     box-shadow: 0 4px 12px rgba(37, 211, 102, 0.3);
     z-index: 999;
     transition: all 0.3s ease;
-    animation: pulse 2s infinite;
 }
 
 .whatsapp-btn:hover {
-    background-color: #128C7E; /* Cor mais escura no hover */
     transform: scale(1.1);
-    box-shadow: 0 6px 16px rgba(37, 211, 102, 0.4);
+    box-shadow: 0 6px 20px rgba(37, 211, 102, 0.4);
 }
 
-.whatsapp-btn:hover .whatsapp-tooltip {
-    opacity: 1;
-    transform: translateX(-10px);
-}
+/* ============================================
+   RESPONSIVIDADE
+   ============================================ */
 
-.whatsapp-tooltip {
-    position: absolute;
-    right: 70px;
-    background-color: #333;
-    color: white;
-    padding: 8px 12px;
-    border-radius: 4px;
-    font-size: 14px;
-    white-space: nowrap;
-    opacity: 0;
-    transition: all 0.3s ease;
-    pointer-events: none;
-}
-
-.whatsapp-tooltip::after {
-    content: '';
-    position: absolute;
-    top: 50%;
-    right: -5px;
-    transform: translateY(-50%);
-    border-width: 5px;
-    border-style: solid;
-    border-color: transparent transparent transparent #333;
-}
-
-/* Animação de pulsar */
-@keyframes pulse {
-    0% {
-        box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7);
-    }
-    70% {
-        box-shadow: 0 0 0 10px rgba(37, 211, 102, 0);
-    }
-    100% {
-        box-shadow: 0 0 0 0 rgba(37, 211, 102, 0);
-    }
-}
-
-/* Para mobile: botão menor e posição ajustada */
 @media (max-width: 768px) {
+    .menu-toggle {
+        display: block;
+    }
+    
+    .nav-menu {
+        position: fixed;
+        top: 0;
+        right: -100%;
+        width: 80%;
+        max-width: 300px;
+        height: 100vh;
+        background-color: var(--color-card);
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 6rem var(--space-xl) var(--space-xl);
+        box-shadow: -5px 0 15px rgba(0, 0, 0, 0.3);
+        transition: right var(--transition-normal);
+        z-index: 1000;
+    }
+    
+    .nav-menu.active {
+        right: 0;
+    }
+    
+    .nav-menu li {
+        margin: 0 0 var(--space-lg);
+        width: 100%;
+    }
+    
+    .services-cards {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+    
+    .service-card {
+        padding: var(--space-lg);
+    }
+    
+    .commitment-text {
+        flex-direction: column;
+        text-align: center;
+        gap: var(--space-sm);
+        font-size: 1rem;
+    }
+    
     .whatsapp-btn {
         width: 55px;
         height: 55px;
@@ -1036,8 +1230,35 @@ header.scrolled {
         right: 20px;
         font-size: 26px;
     }
-    
-    .whatsapp-tooltip {
-        display: none; /* Oculta tooltip em mobile */
-    }
+}
+/* ============================================
+   LISTA DE VALORES
+   ============================================ */
+
+.values-list {
+    list-style: none;
+    text-align: left;
+    margin-top: var(--space-md);
+}
+
+.values-list li {
+    margin-bottom: var(--space-xs);
+    display: flex;
+    align-items: flex-start;
+    color: var(--color-gray);
+    font-size: 0.95rem;
+    line-height: 1.5;
+}
+
+.values-list li i {
+    color: var(--color-secondary);
+    margin-right: var(--space-xs);
+    font-size: 0.9rem;
+    margin-top: 0.2rem;
+    flex-shrink: 0;
+}
+
+.values-list li strong {
+    color: var(--color-dark-gray);
+    margin-right: 5px;
 }
