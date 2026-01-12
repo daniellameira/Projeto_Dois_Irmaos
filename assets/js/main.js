@@ -37,41 +37,65 @@ function initLoader() {
 }
 
 // ============================================
-// MENU MOBILE
+// MENU MOBILE - FUNÇÃO CORRIGIDA
 // ============================================
 
 function initMobileMenu() {
     const menuToggle = document.querySelector('.menu-toggle');
     const navMenu = document.querySelector('.nav-menu');
     const navLinks = document.querySelectorAll('.nav-link');
+    const body = document.body;
+    
+    if (!menuToggle) return;
     
     // Alternar menu mobile
-    menuToggle.addEventListener('click', function() {
+    menuToggle.addEventListener('click', function(e) {
+        e.stopPropagation();
         this.classList.toggle('active');
         navMenu.classList.toggle('active');
+        body.style.overflow = navMenu.classList.contains('active') ? 'hidden' : 'auto';
         this.setAttribute('aria-expanded', this.classList.contains('active'));
-        
-        // Fechar menu ao clicar em um link
-        navLinks.forEach(link => {
-            link.addEventListener('click', () => {
-                menuToggle.classList.remove('active');
-                navMenu.classList.remove('active');
-                menuToggle.setAttribute('aria-expanded', 'false');
-            });
+    });
+    
+    // Fechar menu ao clicar em um link
+    navLinks.forEach(link => {
+        link.addEventListener('click', () => {
+            menuToggle.classList.remove('active');
+            navMenu.classList.remove('active');
+            body.style.overflow = 'auto';
+            menuToggle.setAttribute('aria-expanded', 'false');
         });
     });
     
     // Fechar menu ao clicar fora
-    document.addEventListener('click', function(event) {
-        const isClickInsideMenu = navMenu.contains(event.target);
-        const isClickOnToggle = menuToggle.contains(event.target);
+    document.addEventListener('click', function(e) {
+        const isClickInsideMenu = navMenu.contains(e.target);
+        const isClickOnToggle = menuToggle.contains(e.target);
         
         if (!isClickInsideMenu && !isClickOnToggle && navMenu.classList.contains('active')) {
             menuToggle.classList.remove('active');
             navMenu.classList.remove('active');
+            body.style.overflow = 'auto';
             menuToggle.setAttribute('aria-expanded', 'false');
         }
     });
+    
+    // Fechar menu com ESC
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape' && navMenu.classList.contains('active')) {
+            menuToggle.classList.remove('active');
+            navMenu.classList.remove('active');
+            body.style.overflow = 'auto';
+            menuToggle.setAttribute('aria-expanded', 'false');
+        }
+    });
+    
+    // Prevenir scroll quando menu está aberto
+    navMenu.addEventListener('touchmove', function(e) {
+        if (navMenu.classList.contains('active')) {
+            e.preventDefault();
+        }
+    }, { passive: false });
 }
 
 // ============================================
