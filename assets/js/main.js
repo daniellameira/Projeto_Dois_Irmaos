@@ -43,41 +43,40 @@ function initLoader() {
 function initMobileMenu() {
     const menuToggle = document.querySelector('.menu-toggle');
     const navMenu = document.querySelector('.nav-menu');
+    const menuOverlay = document.querySelector('.menu-overlay');
     const navLinks = document.querySelectorAll('.nav-link');
     const body = document.body;
     
     if (!menuToggle) return;
     
-    // Alternar menu mobile
+    // Abrir/fechar menu
     menuToggle.addEventListener('click', function(e) {
         e.stopPropagation();
-        this.classList.toggle('active');
+        const isActive = this.classList.toggle('active');
         navMenu.classList.toggle('active');
-        body.style.overflow = navMenu.classList.contains('active') ? 'hidden' : 'auto';
-        this.setAttribute('aria-expanded', this.classList.contains('active'));
+        body.style.overflow = isActive ? 'hidden' : 'auto';
+        this.setAttribute('aria-expanded', isActive);
     });
     
-    // Fechar menu ao clicar em um link
-    navLinks.forEach(link => {
-        link.addEventListener('click', () => {
+    // Fechar menu ao clicar no overlay
+    if (menuOverlay) {
+        menuOverlay.addEventListener('click', function() {
             menuToggle.classList.remove('active');
             navMenu.classList.remove('active');
             body.style.overflow = 'auto';
             menuToggle.setAttribute('aria-expanded', 'false');
         });
-    });
+    }
     
-    // Fechar menu ao clicar fora
-    document.addEventListener('click', function(e) {
-        const isClickInsideMenu = navMenu.contains(e.target);
-        const isClickOnToggle = menuToggle.contains(e.target);
-        
-        if (!isClickInsideMenu && !isClickOnToggle && navMenu.classList.contains('active')) {
+    // Fechar menu ao clicar em links
+    navLinks.forEach(link => {
+        link.addEventListener('click', () => {
             menuToggle.classList.remove('active');
             navMenu.classList.remove('active');
+            if (menuOverlay) menuOverlay.style.display = 'none';
             body.style.overflow = 'auto';
             menuToggle.setAttribute('aria-expanded', 'false');
-        }
+        });
     });
     
     // Fechar menu com ESC
@@ -85,17 +84,11 @@ function initMobileMenu() {
         if (e.key === 'Escape' && navMenu.classList.contains('active')) {
             menuToggle.classList.remove('active');
             navMenu.classList.remove('active');
+            if (menuOverlay) menuOverlay.style.display = 'none';
             body.style.overflow = 'auto';
             menuToggle.setAttribute('aria-expanded', 'false');
         }
     });
-    
-    // Prevenir scroll quando menu está aberto
-    navMenu.addEventListener('touchmove', function(e) {
-        if (navMenu.classList.contains('active')) {
-            e.preventDefault();
-        }
-    }, { passive: false });
 }
 
 // ============================================

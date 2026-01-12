@@ -335,7 +335,10 @@ header.scrolled {
 .menu-toggle.active .hamburger::after {
     transform: rotate(-45deg) translate(7px, -6px);
 }
-/* Menu Mobile - CORRIGIDO */
+/* ============================================
+   MENU MOBILE - CORRIGIDO (SEM TRANSPARÊNCIA)
+   ============================================ */
+
 @media (max-width: 768px) {
     .menu-toggle {
         display: block;
@@ -348,16 +351,20 @@ header.scrolled {
         width: 85%;
         max-width: 320px;
         height: 100vh;
-        background: var(--gradient-card); /* Fundo sólido agora */
-        backdrop-filter: blur(10px);
-        -webkit-backdrop-filter: blur(10px);
+        /* CORREÇÃO: Substituir gradient por cor sólida */
+        background: #1a1a1a; /* Cor de fundo sólida garantida */
+        background: linear-gradient(180deg, #1e1e1e 0%, #121212 100%); /* Gradiente opaco */
+        /* REMOVER backdrop-filter que causa transparência */
+        /* backdrop-filter: blur(10px); */
+        /* -webkit-backdrop-filter: blur(10px); */
         flex-direction: column;
         align-items: flex-start;
         padding: 100px 30px 40px;
-        box-shadow: -5px 0 25px rgba(0, 0, 0, 0.3);
+        box-shadow: -5px 0 25px rgba(0, 0, 0, 0.5);
         transition: right 0.4s cubic-bezier(0.4, 0, 0.2, 1);
         z-index: 1000;
         border-left: 1px solid var(--color-border);
+        overflow-y: auto;
     }
     
     .nav-menu.active {
@@ -389,47 +396,134 @@ header.scrolled {
         display: block;
         padding: 12px 0;
         font-size: 1.1rem;
-        color: var(--color-primary);
-        font-weight: 500;
-        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        color: #ffffff; /* Branco puro para melhor contraste */
+        font-weight: 600; /* Mais grossa para melhor leitura */
+        border-bottom: 1px solid rgba(255, 255, 255, 0.15);
         width: 100%;
         transition: all var(--transition-fast);
+        text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5); /* Sombra para destacar */
     }
     
     .nav-link:hover,
     .nav-link.active {
         color: var(--color-secondary);
-        padding-left: 10px;
+        padding-left: 15px; /* Mais espaçamento */
         border-bottom-color: var(--color-secondary);
+        background: rgba(212, 181, 91, 0.1); /* Fundo sutil no hover */
+        border-radius: 4px;
+        padding: 12px 0 12px 15px;
+        margin-left: -15px;
+        padding-right: 15px;
     }
     
     .nav-link.active::after {
-        display: none; /* Remove o sublinhado no mobile */
+        display: none;
     }
     
     .nav-cta {
-        margin-top: 20px;
+        margin-top: 25px;
         width: 100%;
         text-align: center;
-        padding: 12px;
+        padding: 14px;
         font-size: 1rem;
+        font-weight: 600;
+        background: rgba(212, 181, 91, 0.15);
+        border: 2px solid var(--color-secondary);
+        color: var(--color-secondary);
+        border-radius: 8px;
+        transition: all 0.3s ease;
     }
     
-    /* Overlay quando menu está aberto */
-    .nav-menu::before {
+    .nav-cta:hover {
+        background: var(--color-secondary);
+        color: #121212;
+        transform: translateY(-2px);
+        box-shadow: 0 4px 12px rgba(212, 181, 91, 0.3);
+    }
+    
+    /* Overlay escuro quando menu está aberto */
+    .nav-menu::after {
         content: '';
         position: fixed;
         top: 0;
-        left: -100%;
+        left: 0;
         width: 100%;
         height: 100%;
-        background: rgba(0, 0, 0, 0.7);
+        background: rgba(0, 0, 0, 0.8);
         z-index: -1;
-        transition: left 0.4s ease;
+        opacity: 0;
+        transition: opacity 0.4s ease;
+        pointer-events: none;
     }
     
-    .nav-menu.active::before {
-        left: 0;
+    .nav-menu.active::after {
+        opacity: 1;
+        pointer-events: all;
+    }
+    
+    /* Melhorar visibilidade do ícone hamburger */
+    .hamburger,
+    .hamburger::before,
+    .hamburger::after {
+        background-color: var(--color-secondary);
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
+    }
+    
+    .menu-toggle.active .hamburger::before,
+    .menu-toggle.active .hamburger::after {
+        background-color: #ffffff;
+    }
+}
+
+/* ============================================
+   MELHORIAS ESPECÍFICAS PARA MOBILE PEQUENO
+   ============================================ */
+
+@media (max-width: 480px) {
+    .nav-menu {
+        width: 90%;
+        max-width: 280px;
+        padding: 90px 20px 30px;
+    }
+    
+    .nav-link {
+        font-size: 1rem;
+        padding: 10px 0;
+    }
+    
+    .nav-link:hover,
+    .nav-link.active {
+        padding-left: 12px;
+        margin-left: -12px;
+    }
+    
+    .nav-cta {
+        padding: 12px;
+        font-size: 0.95rem;
+    }
+    
+    /* Ajustar header para mobile */
+    header {
+        background: #121212 !important; /* Fundo sólido garantido */
+        border-bottom: 1px solid var(--color-border);
+    }
+    
+    .navbar {
+        padding: 12px 0;
+    }
+    
+    /* Logo menor em mobile */
+    .logo img {
+        width: 45px;
+        height: 45px;
+    }
+    
+    .logo-primary {
+        font-size: 1.1rem;
+    }
+    
+    .logo-secondary {
+        font-size: 0.85rem;
     }
 }
 /* ============================================
