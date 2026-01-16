@@ -1,168 +1,190 @@
-// ============================================
-// PORTFÓLIO - FUNCIONALIDADES
-// ============================================
-
+// Portfólio Simples - JavaScript
 document.addEventListener('DOMContentLoaded', function() {
-    initPortfolio();
-});
-
-function initPortfolio() {
-    // Elementos
+    // Elementos do DOM
     const filterButtons = document.querySelectorAll('.filter-btn');
-    const portfolioItems = document.querySelectorAll('.portfolio-item');
-    const loadMoreBtn = document.getElementById('loadMore');
-    const portfolioModal = document.getElementById('portfolioModal');
+    const projectCards = document.querySelectorAll('.project-card');
+    const viewPhotoButtons = document.querySelectorAll('.view-photos-btn');
+    const thumbnails = document.querySelectorAll('.project-thumbnails img');
+    
+    // Elementos do Modal
+    const photoModal = document.querySelector('.photo-modal');
     const modalClose = document.querySelector('.modal-close');
-    const modalImage = document.getElementById('modalImage');
-    const modalTitle = document.getElementById('modalTitle');
-    const modalDescription = document.getElementById('modalDescription');
-    const modalDetails = document.getElementById('modalDetails');
+    const modalImage = document.querySelector('.modal-image');
+    const modalTitle = document.querySelector('.modal-title');
+    const modalDescription = document.querySelector('.modal-description');
+    const prevBtn = document.querySelector('.prev-btn');
+    const nextBtn = document.querySelector('.next-btn');
+    const currentIndexSpan = document.querySelector('.current-index');
+    const totalImagesSpan = document.querySelector('.total-images');
     
-    // Variáveis
-    let visibleItems = 6;
-    const allItems = portfolioItems.length;
+    // Variáveis de controle
+    let currentImages = [];
+    let currentIndex = 0;
+    let currentProject = null;
     
-    // Inicializar
-    showInitialItems();
-    initFiltering();
-    
-    // Filtros
-    function initFiltering() {
-        filterButtons.forEach(button => {
-            button.addEventListener('click', function() {
-                // Atualizar botão ativo
-                filterButtons.forEach(btn => btn.classList.remove('active'));
-                this.classList.add('active');
-                
-                // Obter categoria
-                const filter = this.getAttribute('data-filter');
-                
-                // Filtrar itens
-                portfolioItems.forEach(item => {
-                    if (filter === 'all' || item.getAttribute('data-category') === filter) {
-                        item.style.display = 'block';
-                    } else {
-                        item.style.display = 'none';
-                    }
-                });
-                
-                // Resetar contador
-                visibleItems = 6;
-                showInitialItems();
-            });
-        });
-    }
-    
-    // Mostrar itens iniciais
-    function showInitialItems() {
-        let shown = 0;
-        
-        portfolioItems.forEach((item, index) => {
-            if (item.style.display !== 'none') {
-                if (shown < visibleItems) {
-                    item.style.display = 'block';
-                    shown++;
+    // ========================================
+    // 1. FILTRAGEM DE PROJETOS
+    // ========================================
+    filterButtons.forEach(button => {
+        button.addEventListener('click', function() {
+            // Remove active de todos os botões
+            filterButtons.forEach(btn => btn.classList.remove('active'));
+            
+            // Adiciona active no botão clicado
+            this.classList.add('active');
+            
+            const filter = this.getAttribute('data-filter');
+            
+            // Filtra os projetos
+            projectCards.forEach(card => {
+                if (filter === 'all' || card.getAttribute('data-category') === filter) {
+                    card.style.display = 'block';
                 } else {
-                    item.style.display = 'none';
-                }
-            }
-        });
-        
-        // Esconder botão se todos já estão visíveis
-        if (shown >= allItems || shown >= getVisibleCount()) {
-            loadMoreBtn.style.display = 'none';
-        } else {
-            loadMoreBtn.style.display = 'inline-flex';
-        }
-    }
-    
-    // Carregar mais itens
-    if (loadMoreBtn) {
-        loadMoreBtn.addEventListener('click', function() {
-            visibleItems += 3;
-            showInitialItems();
-        });
-    }
-    
-    // Contar itens visíveis
-    function getVisibleCount() {
-        let count = 0;
-        portfolioItems.forEach(item => {
-            if (item.style.display !== 'none') {
-                count++;
-            }
-        });
-        return count;
-    }
-    
-    // Modal - Abrir com detalhes do projeto
-    portfolioItems.forEach(item => {
-        const card = item.querySelector('.portfolio-card');
-        const image = item.querySelector('img');
-        const title = item.querySelector('.portfolio-info h3');
-        const description = item.querySelector('.portfolio-info p');
-        const details = item.querySelector('.portfolio-details');
-        
-        card.addEventListener('click', function(e) {
-            if (!e.target.closest('a')) { // Evita conflito com links
-                // Preencher modal
-                modalImage.src = image.src;
-                modalImage.alt = image.alt;
-                modalTitle.textContent = title.textContent;
-                modalDescription.textContent = description.textContent;
-                modalDetails.innerHTML = details.innerHTML;
-                
-                // Mostrar modal
-                portfolioModal.classList.add('active');
-                document.body.style.overflow = 'hidden'; // Bloquear scroll
-            }
-        });
-    });
-    
-    // Fechar modal
-    if (modalClose) {
-        modalClose.addEventListener('click', function() {
-            portfolioModal.classList.remove('active');
-            document.body.style.overflow = 'auto';
-        });
-    }
-    
-    // Fechar modal ao clicar fora
-    portfolioModal.addEventListener('click', function(e) {
-        if (e.target === portfolioModal) {
-            portfolioModal.classList.remove('active');
-            document.body.style.overflow = 'auto';
-        }
-    });
-    
-    // Fechar modal com ESC
-    document.addEventListener('keydown', function(e) {
-        if (e.key === 'Escape' && portfolioModal.classList.contains('active')) {
-            portfolioModal.classList.remove('active');
-            document.body.style.overflow = 'auto';
-        }
-    });
-    
-    // Carregar imagens com lazy loading
-    initLazyLoading();
-}
-
-// Lazy loading para imagens
-function initLazyLoading() {
-    if ('IntersectionObserver' in window) {
-        const imageObserver = new IntersectionObserver((entries, observer) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    const img = entry.target;
-                    img.src = img.dataset.src || img.src;
-                    img.classList.add('loaded');
-                    observer.unobserve(img);
+                    card.style.display = 'none';
                 }
             });
         });
-        
-        document.querySelectorAll('.portfolio-image img').forEach(img => {
-            imageObserver.observe(img);
+    });
+    
+    // ========================================
+    // 2. ABRIR GALERIA DE FOTOS
+    // ========================================
+    viewPhotoButtons.forEach((button, index) => {
+        button.addEventListener('click', function() {
+            openGallery(this.closest('.project-card'));
         });
+    });
+    
+    // Também permite abrir a galeria clicando na imagem principal
+    document.querySelectorAll('.main-image').forEach(img => {
+        img.addEventListener('click', function() {
+            openGallery(this.closest('.project-card'));
+        });
+    });
+    
+    // Miniaturas também abrem a galeria
+    thumbnails.forEach(thumbnail => {
+        thumbnail.addEventListener('click', function() {
+            const projectCard = this.closest('.project-card');
+            openGallery(projectCard);
+            
+            // Encontra o índice da miniatura clicada
+            const thumbnailsInProject = projectCard.querySelectorAll('.project-thumbnails img');
+            const clickedIndex = Array.from(thumbnailsInProject).indexOf(this);
+            
+            if (clickedIndex !== -1) {
+                currentIndex = clickedIndex;
+                updateModalImage();
+            }
+        });
+    });
+    
+    // ========================================
+    // 3. FUNÇÕES DO MODAL
+    // ========================================
+    function openGallery(projectCard) {
+        currentProject = projectCard;
+        
+        // Coletar todas as imagens do projeto
+        const mainImage = projectCard.querySelector('.main-image').src;
+        const thumbnailImages = projectCard.querySelectorAll('.project-thumbnails img');
+        
+        currentImages = [mainImage];
+        thumbnailImages.forEach(img => {
+            currentImages.push(img.getAttribute('data-full'));
+        });
+        
+        // Remover duplicados
+        currentImages = [...new Set(currentImages.filter(img => img))];
+        
+        // Informações do projeto
+        const title = projectCard.querySelector('h3').textContent;
+        const description = projectCard.querySelector('p').textContent;
+        
+        // Atualizar modal
+        modalTitle.textContent = title;
+        modalDescription.textContent = description;
+        totalImagesSpan.textContent = currentImages.length;
+        
+        // Resetar índice
+        currentIndex = 0;
+        updateModalImage();
+        
+        // Abrir modal
+        photoModal.classList.add('active');
+        document.body.style.overflow = 'hidden';
     }
-}
+    
+    function updateModalImage() {
+        if (currentImages[currentIndex]) {
+            modalImage.src = currentImages[currentIndex];
+            currentIndexSpan.textContent = currentIndex + 1;
+            
+            // Atualizar estado dos botões de navegação
+            prevBtn.style.opacity = currentIndex === 0 ? '0.5' : '1';
+            nextBtn.style.opacity = currentIndex === currentImages.length - 1 ? '0.5' : '1';
+        }
+    }
+    
+    function showPrevImage() {
+        if (currentIndex > 0) {
+            currentIndex--;
+            updateModalImage();
+        }
+    }
+    
+    function showNextImage() {
+        if (currentIndex < currentImages.length - 1) {
+            currentIndex++;
+            updateModalImage();
+        }
+    }
+    
+    function closeModal() {
+        photoModal.classList.remove('active');
+        document.body.style.overflow = 'auto';
+        currentImages = [];
+        currentIndex = 0;
+        currentProject = null;
+    }
+    
+    // ========================================
+    // 4. EVENT LISTENERS DO MODAL
+    // ========================================
+    modalClose.addEventListener('click', closeModal);
+    
+    photoModal.addEventListener('click', function(e) {
+        if (e.target === photoModal) {
+            closeModal();
+        }
+    });
+    
+    prevBtn.addEventListener('click', showPrevImage);
+    nextBtn.addEventListener('click', showNextImage);
+    
+    // Navegação por teclado
+    document.addEventListener('keydown', function(e) {
+        if (!photoModal.classList.contains('active')) return;
+        
+        switch(e.key) {
+            case 'Escape':
+                closeModal();
+                break;
+            case 'ArrowLeft':
+                showPrevImage();
+                break;
+            case 'ArrowRight':
+                showNextImage();
+                break;
+        }
+    });
+    
+    // ========================================
+    // 5. INICIALIZAÇÃO
+    // ========================================
+    
+    // Inicializa o contador total de imagens no modal
+    totalImagesSpan.textContent = '0';
+    
+    console.log('Portfólio simples inicializado com sucesso!');
+});

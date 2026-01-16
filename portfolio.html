@@ -3,43 +3,35 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
-    <!-- Meta Tags para SEO -->
+
+     <!-- Meta Tags para SEO -->
     <title>Portfólio | Dois Irmãos Importadora Ltda - Nossas Obras Realizadas</title>
     <meta name="description" content="Conheça nossos projetos realizados em engenharia civil, construção, reformas e infraestrutura. Galeria de obras executadas com qualidade e excelência.">
     <meta name="keywords" content="portfólio engenharia, obras realizadas, projetos de construção, galeria de obras, casos de sucesso, Dois Irmãos">
     <meta name="author" content="Dois Irmãos Importadora Ltda">
-    
+
     <!-- Favicon -->
-    <link rel="icon" type="image/x-icon" href="assets/images/Logotipo.png">
-    
+    <link rel="icon" type="image/x-icon" href="assets/images/Logo.png">
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Open+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
     <!-- CSS -->
     <link rel="stylesheet" href="assets/css/style.css">
     <link rel="stylesheet" href="assets/css/responsive.css">
-    <link rel="stylesheet" href="assets/css/portfolio.css"> <!-- CSS específico do portfólio -->
-    
-    <!-- Font Awesome Icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="assets/css/portfolio.css">
 </head>
 <body>
-    <!-- Loader -->
-    <div id="loader" class="loader">
-        <div class="loader-spinner"></div>
-        <p>Carregando...</p>
-    </div>
-    
-    <!-- Header / Navegação -->
-    <header id="header">
+     <header id="header">
         <nav class="navbar">
             <div class="container">
                 <!-- Logo -->
                 <a href="index.html" class="logo">
-                    <img src="assets/images/Logotipo.png" width="60" height="60" alt="Dois Irmãos Importadora Ltda">
+                    <img src="assets/images/Logo.png" width="60" height="60" alt="Dois Irmãos Importadora Ltda">
                     <div class="logo-text">
                         <span class="logo-primary">Dois Irmãos</span>
                         <span class="logo-secondary">Importadora Ltda</span>
@@ -93,257 +85,155 @@
     <section class="portfolio-filters">
         <div class="container">
             <div class="filter-buttons">
-                <button class="filter-btn active" data-filter="all">Todos os Projetos</button>
-                <button class="filter-btn" data-filter="obras-publicas">Obras Públicas</button>
-                <button class="filter-btn" data-filter="construcao-civil">Construção Civil</button>
-                <button class="filter-btn" data-filter="reformas">Reformas</button>
+                <button class="filter-btn active" data-filter="all">Todos</button>
+                <button class="filter-btn" data-filter="saerp">SAERP</button>
+                <button class="filter-btn" data-filter="pirinopolis">Prefeitura Pirinópolis</button>
+                <button class="filter-btn" data-filter="itaruma">Prefeitura Itarumã</button>
                 <button class="filter-btn" data-filter="infraestrutura">Infraestrutura</button>
-                <button class="filter-btn" data-filter="manutencao">Manutenção</button>
             </div>
         </div>
     </section>
     
     <!-- Galeria de Projetos -->
-    <section class="portfolio-gallery">
+    <section class="projects-gallery">
         <div class="container">
-            <div class="gallery-grid">
+            <div class="projects-grid">
                 
-                <!-- Projeto 1: Construção Civil -->
-                <div class="portfolio-item" data-category="construcao-civil">
-                    <div class="portfolio-card">
-                        <div class="portfolio-image">
-                            <img src="assets/images/portfolio/construcao-edificio.jpg" alt="Construção de Edifício Comercial" loading="lazy">
-                            <div class="portfolio-overlay">
-                                <span class="portfolio-category">Construção Civil</span>
-                                <h3 class="portfolio-title">Edifício Comercial</h3>
-                                <p class="portfolio-location">São Paulo, SP</p>
-                            </div>
+                <!-- Projeto SAERP -->
+                <div class="project-card" data-category="saerp">
+                    <div class="project-image">
+                        <img src="assets/images/Ribeirão Preto/foto3.jpeg" 
+                             alt="Reforma SAERP Ribeirão Preto" 
+                             loading="lazy"
+                             class="main-image">
+                        <div class="project-badge">SAERP</div>
+                    </div>
+                    <div class="project-info">
+                        <h3>Secretaria de Água e Esgoto de Ribeirão Preto - Saerp</h3>
+                        <p>Reforma e impermeabilização em 3 unidades da SAERP.</p>
+                        
+                        <div class="project-details">
+                            <span><i class="fas fa-map-marker-alt"></i> Ribeirão Preto, SP</span>
+                            <span><i class="fas fa-calendar-alt"></i> 6 meses</span>
+                            <span><i class="fas fa-ruler-combined"></i>800 m²</span>
                         </div>
-                        <div class="portfolio-info">
-                            <h3>Edifício Comercial Alpha</h3>
-                            <p>Construção de edifício comercial de 12 andares com estrutura metálica e fachada curtain wall.</p>
-                            <div class="portfolio-details">
-                                <span><i class="fas fa-calendar"></i> 18 meses</span>
-                                <span><i class="fas fa-ruler-combined"></i> 8.000 m²</span>
-                                <span><i class="fas fa-users"></i> Cliente Privado</span>
-                            </div>
+                        
+                        <!-- Miniaturas das fotos -->
+                        <div class="project-thumbnails">
+                            <img src="assets/images/Ribeirão Preto/foto1.jpeg" 
+                                 alt="Foto 1" 
+                                 data-full="assets/images/Ribeirão Preto/foto2.jpeg">
+                            <img src="assets/images/Ribeirão Preto/foto2.jpeg" 
+                                 alt="Foto 2" 
+                                 data-full="assets/images/Ribeirão Preto/foto3.jpeg">
+                            <img src="assets/images/Ribeirão Preto/foto3.jpeg" 
+                                 alt="Foto 3">
                         </div>
+                        
+                        <button class="view-photos-btn">
+                            <i class="fas fa-images"></i> Ver Fotos
+                        </button>
                     </div>
                 </div>
                 
-                <!-- Projeto 2: Obras Públicas -->
-                <div class="portfolio-item" data-category="obras-publicas">
-                    <div class="portfolio-card">
-                        <div class="portfolio-image">
-                            <img src="assets/images/portfolio/escola-publica.jpg" alt="Construção de Escola Pública" loading="lazy">
-                            <div class="portfolio-overlay">
-                                <span class="portfolio-category">Obras Públicas</span>
-                                <h3 class="portfolio-title">Escola Municipal</h3>
-                                <p class="portfolio-location">Brasília, DF</p>
-                            </div>
+                <!-- Projeto Pirinópolis -->
+                <div class="project-card" data-category="pirinopolis">
+                    <div class="project-image">
+                        <img src="assets/images/Prefeitura Pirenópolis/foto1.jpeg" 
+                             alt="Escola Pública" 
+                             loading="lazy"
+                             class="main-image">
+                        <div class="project-badge">Prefeitura Pirinópolis</div>
+                    </div>
+                    <div class="project-info">
+                        <h3>Prefeitura de Pirinópolis</h3>
+                        <p>Execução de faixa elevadas, execução de pedras nas ruas de Pirenópolis</p>
+                        
+                        <div class="project-details">
+                            <span><i class="fas fa-map-marker-alt"></i> Pirinópolis, GO</span>
+                            <span><i class="fas fa-calendar-alt"></i> 3 meses</span>
+                            <span><i class="fas fa-ruler-combined"></i> 2.500 m²</span>
                         </div>
-                        <div class="portfolio-info">
-                            <h3>Escola Municipal Verde</h3>
-                            <p>Construção completa de escola pública com 12 salas de aula, biblioteca e quadra poliesportiva.</p>
-                            <div class="portfolio-details">
-                                <span><i class="fas fa-calendar"></i> 14 meses</span>
-                                <span><i class="fas fa-ruler-combined"></i> 5.200 m²</span>
-                                <span><i class="fas fa-users"></i> Prefeitura</span>
-                            </div>
+                        
+                        <!-- Miniaturas das fotos -->
+                        <div class="project-thumbnails">
+                            <img src="assets/images/Prefeitura Pirenópolis/foto1.jpeg" 
+                                 alt="Foto 1" 
+                                 data-full="assets/images/Prefeitura Pirenópolis/foto2.png">
+                            <img src="assets/images/Prefeitura Pirenópolis/foto2.png" 
+                                 alt="Foto 2" 
+                                 data-full="assets/images/Prefeitura Pirenópolis/foto3.png">
+                            <img src="assets/images/Prefeitura Pirenópolis/foto3.png" 
+                                 alt="Foto 3">
                         </div>
+                        
+                        <button class="view-photos-btn">
+                            <i class="fas fa-images"></i> Ver Fotos
+                        </button>
                     </div>
                 </div>
                 
-                <!-- Projeto 3: Infraestrutura -->
-                <div class="portfolio-item" data-category="infraestrutura">
-                    <div class="portfolio-card">
-                        <div class="portfolio-image">
-                            <img src="assets/images/portfolio/pavimentacao.jpg" alt="Pavimentação Asfáltica" loading="lazy">
-                            <div class="portfolio-overlay">
-                                <span class="portfolio-category">Infraestrutura</span>
-                                <h3 class="portfolio-title">Pavimentação Urbana</h3>
-                                <p class="portfolio-location">Goiânia, GO</p>
-                            </div>
+                <!-- Projeto Itarumã -->
+                <div class="project-card" data-category="itaruma">
+                    <div class="project-image">
+                        <img src="assets/images/Prefeitura Itarumã/Foto1.jpeg" 
+                             alt="Reforma Predial" 
+                             loading="lazy"
+                             class="main-image">
+                        <div class="project-badge">Prefeitura Itarumã</div>
+                    </div>
+                    <div class="project-info">
+                        <h3>Prefeitura de Itarumã</h3>
+                        <p>Execução de calçada e meio fio e terraplenagem do solo. Prefeitura Itarumã Goiás</p>
+                        
+                        <div class="project-details">
+                            <span><i class="fas fa-map-marker-alt"></i> Itarumã, GO</span>
+                            <span><i class="fas fa-calendar-alt"></i> 3 meses</span>
+                            <span><i class="fas fa-ruler-combined"></i> 2.500 m²</span>
                         </div>
-                        <div class="portfolio-info">
-                            <h3>Pavimentação Avenida Central</h3>
-                            <p>Pavimentação asfáltica de 3km com drenagem pluvial e sinalização viária completa.</p>
-                            <div class="portfolio-details">
-                                <span><i class="fas fa-calendar"></i> 6 meses</span>
-                                <span><i class="fas fa-road"></i> 3.000 m</span>
-                                <span><i class="fas fa-users"></i> Governo Estadual</span>
-                            </div>
+                        
+                        <!-- Miniaturas das fotos -->
+                        <div class="project-thumbnails">
+                            <img src="assets/images/Prefeitura Itarumã/Foto1.jpeg" 
+                                 alt="Foto 1" 
+                                 data-full="assets/images/Prefeitura Itarumã/Foto2.jpeg">
+                            <img src="assets/images/Prefeitura Itarumã/Foto2.jpeg" 
+                                 alt="Foto 2" 
+                                 data-full="assets/images/Prefeitura Itarumã/Foto3.jpeg">
+                            <img src="assets/images/Prefeitura Itarumã/Foto3.jpeg" 
+                                 alt="Foto 3">
                         </div>
+                        
+                        <button class="view-photos-btn">
+                            <i class="fas fa-images"></i> Ver Fotos
+                        </button>
                     </div>
                 </div>
                 
-                <!-- Projeto 4: Reformas -->
-                <div class="portfolio-item" data-category="reformas">
-                    <div class="portfolio-card">
-                        <div class="portfolio-image">
-                            <img src="assets/images/portfolio/reforma-predial.jpg" alt="Reforma de Prédio Histórico" loading="lazy">
-                            <div class="portfolio-overlay">
-                                <span class="portfolio-category">Reformas</span>
-                                <h3 class="portfolio-title">Reforma Estrutural</h3>
-                                <p class="portfolio-location">Rio de Janeiro, RJ</p>
-                            </div>
-                        </div>
-                        <div class="portfolio-info">
-                            <h3>Prédio Histórico Restaurado</h3>
-                            <p>Reforma estrutural completa com preservação da fachada histórica e modernização interna.</p>
-                            <div class="portfolio-details">
-                                <span><i class="fas fa-calendar"></i> 10 meses</span>
-                                <span><i class="fas fa-ruler-combined"></i> 3.500 m²</span>
-                                <span><i class="fas fa-users"></i> Empresa Privada</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                <!-- Adicione mais projetos conforme necessário -->
                 
-                <!-- Projeto 5: Manutenção -->
-                <div class="portfolio-item" data-category="manutencao">
-                    <div class="portfolio-card">
-                        <div class="portfolio-image">
-                            <img src="assets/images/portfolio/manutencao-shopping.jpg" alt="Manutenção de Shopping Center" loading="lazy">
-                            <div class="portfolio-overlay">
-                                <span class="portfolio-category">Manutenção</span>
-                                <h3 class="portfolio-title">Manutenção Predial</h3>
-                                <p class="portfolio-location">Curitiba, PR</p>
-                            </div>
-                        </div>
-                        <div class="portfolio-info">
-                            <h3>Shopping Center Metrópole</h3>
-                            <p>Contrato de manutenção predial preventiva e corretiva com equipe técnica especializada.</p>
-                            <div class="portfolio-details">
-                                <span><i class="fas fa-calendar"></i> Contrato anual</span>
-                                <span><i class="fas fa-ruler-combined"></i> 45.000 m²</span>
-                                <span><i class="fas fa-users"></i> Rede de Shoppings</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Projeto 6: Infraestrutura -->
-                <div class="portfolio-item" data-category="infraestrutura">
-                    <div class="portfolio-card">
-                        <div class="portfolio-image">
-                            <img src="assets/images/portfolio/drenagem.jpg" alt="Sistema de Drenagem Pluvial" loading="lazy">
-                            <div class="portfolio-overlay">
-                                <span class="portfolio-category">Infraestrutura</span>
-                                <h3 class="portfolio-title">Drenagem Urbana</h3>
-                                <p class="portfolio-location">Belo Horizonte, MG</p>
-                            </div>
-                        </div>
-                        <div class="portfolio-info">
-                            <h3>Sistema de Drenagem Pluvial</h3>
-                            <p>Instalação de sistema completo de drenagem para prevenção de enchentes em área urbana.</p>
-                            <div class="portfolio-details">
-                                <span><i class="fas fa-calendar"></i> 8 meses</span>
-                                <span><i class="fas fa-water"></i> 2,5 km</span>
-                                <span><i class="fas fa-users"></i> Prefeitura</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Projeto 7: Construção Civil -->
-                <div class="portfolio-item" data-category="construcao-civil">
-                    <div class="portfolio-card">
-                        <div class="portfolio-image">
-                            <img src="assets/images/portfolio/hospital.jpg" alt="Construção de Hospital" loading="lazy">
-                            <div class="portfolio-overlay">
-                                <span class="portfolio-category">Construção Civil</span>
-                                <h3 class="portfolio-title">Hospital Regional</h3>
-                                <p class="portfolio-location">Fortaleza, CE</p>
-                            </div>
-                        </div>
-                        <div class="portfolio-info">
-                            <h3>Hospital Municipal</h3>
-                            <p>Construção de hospital com 200 leitos, centro cirúrgico e emergência 24h.</p>
-                            <div class="portfolio-details">
-                                <span><i class="fas fa-calendar"></i> 24 meses</span>
-                                <span><i class="fas fa-ruler-combined"></i> 15.000 m²</span>
-                                <span><i class="fas fa-users"></i> Governo Estadual</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Projeto 8: Obras Públicas -->
-                <div class="portfolio-item" data-category="obras-publicas">
-                    <div class="portfolio-card">
-                        <div class="portfolio-image">
-                            <img src="assets/images/portfolio/ponte.jpg" alt="Construção de Ponte" loading="lazy">
-                            <div class="portfolio-overlay">
-                                <span class="portfolio-category">Obras Públicas</span>
-                                <h3 class="portfolio-title">Ponte Rodoviária</h3>
-                                <p class="portfolio-location">Porto Alegre, RS</p>
-                            </div>
-                        </div>
-                        <div class="portfolio-info">
-                            <h3>Ponte sobre o Rio</h3>
-                            <p>Construção de ponte rodoviária de 180m com estrutura em concreto protendido.</p>
-                            <div class="portfolio-details">
-                                <span><i class="fas fa-calendar"></i> 16 meses</span>
-                                <span><i class="fas fa-ruler-combined"></i> 180 m</span>
-                                <span><i class="fas fa-users"></i> DNIT</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Projeto 9: Reformas -->
-                <div class="portfolio-item" data-category="reformas">
-                    <div class="portfolio-card">
-                        <div class="portfolio-image">
-                            <img src="assets/images/portfolio/impermeabilizacao.jpg" alt="Impermeabilização de Laje" loading="lazy">
-                            <div class="portfolio-overlay">
-                                <span class="portfolio-category">Reformas</span>
-                                <h3 class="portfolio-title">Impermeabilização</h3>
-                                <p class="portfolio-location">Salvador, BA</p>
-                            </div>
-                        </div>
-                        <div class="portfolio-info">
-                            <h3>Condomínio Residencial</h3>
-                            <p>Serviço completo de impermeabilização de lajes e áreas molhadas em condomínio vertical.</p>
-                            <div class="portfolio-details">
-                                <span><i class="fas fa-calendar"></i> 3 meses</span>
-                                <span><i class="fas fa-ruler-combined"></i> 2.800 m²</span>
-                                <span><i class="fas fa-users"></i> Condomínio</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-            </div>
-            
-            <!-- Botão Ver Mais -->
-            <div class="portfolio-load-more">
-                <button id="loadMore" class="btn btn-outline">
-                    <i class="fas fa-plus"></i> Ver Mais Projetos
-                </button>
             </div>
         </div>
     </section>
     
-    <!-- Modal para imagens ampliadas -->
-    <div id="portfolioModal" class="portfolio-modal">
+    <!-- Modal Simples para Fotos -->
+    <div class="photo-modal">
         <div class="modal-content">
-            <button class="modal-close" aria-label="Fechar modal">
-                <i class="fas fa-times"></i>
-            </button>
+            <button class="modal-close"><i class="fas fa-times"></i></button>
             <div class="modal-image-container">
-                <img id="modalImage" src="" alt="">
+                <img src="" alt="" class="modal-image">
+                <button class="modal-nav prev-btn"><i class="fas fa-chevron-left"></i></button>
+                <button class="modal-nav next-btn"><i class="fas fa-chevron-right"></i></button>
+                <div class="image-counter"><span class="current-index">1</span> / <span class="total-images">3</span></div>
             </div>
             <div class="modal-info">
-                <h3 id="modalTitle"></h3>
-                <p id="modalDescription"></p>
-                <div class="modal-details" id="modalDetails"></div>
+                <h3 class="modal-title"></h3>
+                <p class="modal-description"></p>
             </div>
         </div>
     </div>
     
-    <!-- CTA Final -->
+     <!-- CTA Final -->
     <section class="portfolio-cta">
         <div class="container">
             <div class="cta-content">
@@ -362,7 +252,7 @@
             <div class="footer-content">
                 <div class="footer-brand">
                     <a href="index.html" class="logo">
-                        <img src="assets/images/Logotipo.png" width="80" height="80" alt="Dois Irmãos Importadora Ltda">
+                        <img src="assets/images/Logo.png" width="80" height="80" alt="Dois Irmãos Importadora Ltda">
                         <div class="logo-text">
                             <span class="logo-primary">Dois Irmãos</span>
                             <span class="logo-secondary">Importadora Ltda</span>
@@ -438,7 +328,7 @@
     </a>
     
     <!-- JavaScript -->
-    <script src="assets/js/main.js"></script>
+     <script src="assets/js/main.js"></script>
     <script src="assets/js/portfolio.js"></script>
 </body>
 </html>
