@@ -1,30 +1,11 @@
 // Portfólio Simples - JavaScript
 document.addEventListener('DOMContentLoaded', function() {
-    // Elementos do DOM
-    const filterButtons = document.querySelectorAll('.filter-btn');
-    const projectCards = document.querySelectorAll('.project-card');
-    const viewPhotoButtons = document.querySelectorAll('.view-photos-btn');
-    const thumbnails = document.querySelectorAll('.project-thumbnails img');
-    
-    // Elementos do Modal
-    const photoModal = document.querySelector('.photo-modal');
-    const modalClose = document.querySelector('.modal-close');
-    const modalImage = document.querySelector('.modal-image');
-    const modalTitle = document.querySelector('.modal-title');
-    const modalDescription = document.querySelector('.modal-description');
-    const prevBtn = document.querySelector('.prev-btn');
-    const nextBtn = document.querySelector('.next-btn');
-    const currentIndexSpan = document.querySelector('.current-index');
-    const totalImagesSpan = document.querySelector('.total-images');
-    
-    // Variáveis de controle
-    let currentImages = [];
-    let currentIndex = 0;
-    let currentProject = null;
-    
     // ========================================
     // 1. FILTRAGEM DE PROJETOS
     // ========================================
+    const filterButtons = document.querySelectorAll('.filter-btn');
+    const projectCards = document.querySelectorAll('.project-card');
+    
     filterButtons.forEach(button => {
         button.addEventListener('click', function() {
             // Remove active de todos os botões
@@ -47,41 +28,29 @@ document.addEventListener('DOMContentLoaded', function() {
     });
     
     // ========================================
-    // 2. ABRIR GALERIA DE FOTOS
+    // 2. GALERIA DE FOTOS
     // ========================================
-    viewPhotoButtons.forEach((button, index) => {
-        button.addEventListener('click', function() {
-            openGallery(this.closest('.project-card'));
-        });
-    });
+    const viewPhotoButtons = document.querySelectorAll('.view-photos-btn');
+    const thumbnails = document.querySelectorAll('.project-thumbnails img');
+    const mainImages = document.querySelectorAll('.main-image');
     
-    // Também permite abrir a galeria clicando na imagem principal
-    document.querySelectorAll('.main-image').forEach(img => {
-        img.addEventListener('click', function() {
-            openGallery(this.closest('.project-card'));
-        });
-    });
+    // Elementos do Modal
+    const photoModal = document.querySelector('.photo-modal');
+    const modalClose = document.querySelector('.modal-close');
+    const modalImage = document.querySelector('.modal-image');
+    const modalTitle = document.querySelector('.modal-title');
+    const modalDescription = document.querySelector('.modal-description');
+    const prevBtn = document.querySelector('.prev-btn');
+    const nextBtn = document.querySelector('.next-btn');
+    const currentIndexSpan = document.querySelector('.current-index');
+    const totalImagesSpan = document.querySelector('.total-images');
     
-    // Miniaturas também abrem a galeria
-    thumbnails.forEach(thumbnail => {
-        thumbnail.addEventListener('click', function() {
-            const projectCard = this.closest('.project-card');
-            openGallery(projectCard);
-            
-            // Encontra o índice da miniatura clicada
-            const thumbnailsInProject = projectCard.querySelectorAll('.project-thumbnails img');
-            const clickedIndex = Array.from(thumbnailsInProject).indexOf(this);
-            
-            if (clickedIndex !== -1) {
-                currentIndex = clickedIndex;
-                updateModalImage();
-            }
-        });
-    });
+    // Variáveis de controle
+    let currentImages = [];
+    let currentIndex = 0;
+    let currentProject = null;
     
-    // ========================================
-    // 3. FUNÇÕES DO MODAL
-    // ========================================
+    // Função para abrir galeria
     function openGallery(projectCard) {
         currentProject = projectCard;
         
@@ -91,11 +60,11 @@ document.addEventListener('DOMContentLoaded', function() {
         
         currentImages = [mainImage];
         thumbnailImages.forEach(img => {
-            currentImages.push(img.getAttribute('data-full'));
+            const fullImage = img.getAttribute('data-full');
+            if (fullImage && !currentImages.includes(fullImage)) {
+                currentImages.push(fullImage);
+            }
         });
-        
-        // Remover duplicados
-        currentImages = [...new Set(currentImages.filter(img => img))];
         
         // Informações do projeto
         const title = projectCard.querySelector('h3').textContent;
@@ -115,6 +84,38 @@ document.addEventListener('DOMContentLoaded', function() {
         document.body.style.overflow = 'hidden';
     }
     
+    // Abrir galeria ao clicar no botão
+    viewPhotoButtons.forEach(button => {
+        button.addEventListener('click', function() {
+            openGallery(this.closest('.project-card'));
+        });
+    });
+    
+    // Abrir galeria ao clicar na imagem principal
+    mainImages.forEach(img => {
+        img.addEventListener('click', function() {
+            openGallery(this.closest('.project-card'));
+        });
+    });
+    
+    // Miniaturas também abrem a galeria
+    thumbnails.forEach(thumbnail => {
+        thumbnail.addEventListener('click', function() {
+            const projectCard = this.closest('.project-card');
+            openGallery(projectCard);
+            
+            // Encontra o índice da miniatura clicada
+            const thumbnailsInProject = projectCard.querySelectorAll('.project-thumbnails img');
+            const clickedIndex = Array.from(thumbnailsInProject).indexOf(this);
+            
+            if (clickedIndex !== -1) {
+                currentIndex = clickedIndex + 1; // +1 porque a primeira imagem é a principal
+                updateModalImage();
+            }
+        });
+    });
+    
+    // Funções do modal
     function updateModalImage() {
         if (currentImages[currentIndex]) {
             modalImage.src = currentImages[currentIndex];
@@ -148,9 +149,7 @@ document.addEventListener('DOMContentLoaded', function() {
         currentProject = null;
     }
     
-    // ========================================
-    // 4. EVENT LISTENERS DO MODAL
-    // ========================================
+    // Event listeners do modal
     modalClose.addEventListener('click', closeModal);
     
     photoModal.addEventListener('click', function(e) {
@@ -180,11 +179,22 @@ document.addEventListener('DOMContentLoaded', function() {
     });
     
     // ========================================
-    // 5. INICIALIZAÇÃO
+    // 3. FUNCIONALIDADE EXTRAS
     // ========================================
     
-    // Inicializa o contador total de imagens no modal
-    totalImagesSpan.textContent = '0';
+    // Tooltip simples para os botões do YouTube
+    const youtubeButtons = document.querySelectorAll('.youtube-btn, .youtube-link-btn');
+    
+    youtubeButtons.forEach(btn => {
+        btn.addEventListener('mouseenter', function() {
+            // Adiciona uma classe para efeito
+            this.classList.add('hover-effect');
+        });
+        
+        btn.addEventListener('mouseleave', function() {
+            this.classList.remove('hover-effect');
+        });
+    });
     
     console.log('Portfólio simples inicializado com sucesso!');
 });

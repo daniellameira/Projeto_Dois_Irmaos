@@ -1,13 +1,16 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-     <!-- Meta Tags para SEO -->
+    <!-- Meta Tags para SEO -->
     <title>Portfólio | Dois Irmãos Importadora Ltda - Nossas Obras Realizadas</title>
-    <meta name="description" content="Conheça nossos projetos realizados em engenharia civil, construção, reformas e infraestrutura. Galeria de obras executadas com qualidade e excelência.">
-    <meta name="keywords" content="portfólio engenharia, obras realizadas, projetos de construção, galeria de obras, casos de sucesso, Dois Irmãos">
+    <meta name="description"
+        content="Conheça nossos projetos realizados em engenharia civil, construção, reformas e infraestrutura. Galeria de obras executadas com qualidade e excelência.">
+    <meta name="keywords"
+        content="portfólio engenharia, obras realizadas, projetos de construção, galeria de obras, casos de sucesso, Dois Irmãos">
     <meta name="author" content="Dois Irmãos Importadora Ltda">
 
     <!-- Favicon -->
@@ -15,18 +18,27 @@
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Open+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Open+Sans:wght@300;400;500;600&display=swap"
+        rel="stylesheet">
 
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
+
     <!-- CSS -->
     <link rel="stylesheet" href="assets/css/style.css">
     <link rel="stylesheet" href="assets/css/responsive.css">
     <link rel="stylesheet" href="assets/css/portfolio.css">
 </head>
+
 <body>
-     <header id="header">
+    <!-- Loader -->
+    <div id="loader" class="loader">
+        <div class="loader-spinner"></div>
+        <p>Carregando...</p>
+    </div>
+
+    <header id="header">
         <nav class="navbar">
             <div class="container">
                 <!-- Logo -->
@@ -37,7 +49,7 @@
                         <span class="logo-secondary">Importadora Ltda</span>
                     </div>
                 </a>
-                
+
                 <!-- Menu Desktop -->
                 <ul class="nav-menu">
                     <li><a href="index.html" class="nav-link">Home</a></li>
@@ -48,7 +60,7 @@
                     <li><a href="index.html#contact" class="nav-link">Contato</a></li>
                     <li><a href="index.html#contact" class="btn btn-outline nav-cta">Solicitar Orçamento</a></li>
                 </ul>
-                
+
                 <!-- Menu Mobile Toggle -->
                 <button class="menu-toggle" aria-label="Abrir menu" aria-expanded="false">
                     <span class="hamburger"></span>
@@ -56,13 +68,14 @@
             </div>
         </nav>
     </header>
-    
+
     <!-- Hero Portfólio -->
     <section class="portfolio-hero">
         <div class="container">
             <div class="portfolio-hero-content">
                 <h1 class="portfolio-title">Nossas <span class="highlight">Obras Realizadas</span></h1>
-                <p class="portfolio-subtitle">Conheça alguns de nossos projetos executados com excelência, qualidade e compromisso</p>
+                <p class="portfolio-subtitle">Conheça alguns de nossos projetos executados com excelência, qualidade e
+                    compromisso</p>
                 <div class="portfolio-stats">
                     <div class="stat-item">
                         <span class="stat-number">150+</span>
@@ -80,7 +93,7 @@
             </div>
         </div>
     </section>
-    
+
     <!-- Filtros de Categorias -->
     <section class="portfolio-filters">
         <div class="container">
@@ -89,133 +102,216 @@
                 <button class="filter-btn" data-filter="saerp">SAERP</button>
                 <button class="filter-btn" data-filter="pirinopolis">Prefeitura Pirinópolis</button>
                 <button class="filter-btn" data-filter="itaruma">Prefeitura Itarumã</button>
-                <button class="filter-btn" data-filter="infraestrutura">Infraestrutura</button>
+                <button class="filter-btn" data-filter="marzagao">Prefeitura Marzagão</button>
             </div>
         </div>
     </section>
-    
+
     <!-- Galeria de Projetos -->
     <section class="projects-gallery">
         <div class="container">
             <div class="projects-grid">
-                
+
                 <!-- Projeto SAERP -->
                 <div class="project-card" data-category="saerp">
                     <div class="project-image">
-                        <img src="assets/images/Ribeirão Preto/foto3.jpeg" 
-                             alt="Reforma SAERP Ribeirão Preto" 
-                             loading="lazy"
-                             class="main-image">
+                        <img src="assets/images/Ribeirão Preto/foto3.jpeg" alt="Reforma SAERP Ribeirão Preto"
+                            loading="lazy" class="main-image">
                         <div class="project-badge">SAERP</div>
+                        <!-- Botão YouTube flutuante -->
+                        <a href="https://www.youtube.com/watch?v=74b-euH6-cQ" 
+                        class="youtube-btn" 
+                        target="_blank" 
+                        rel="noopener noreferrer"
+                        title="Ver vídeo no YouTube (nova aba)">
+                            <i class="fab fa-youtube"></i>
+                        </a>
                     </div>
+
                     <div class="project-info">
                         <h3>Secretaria de Água e Esgoto de Ribeirão Preto - Saerp</h3>
                         <p>Reforma e impermeabilização em 3 unidades da SAERP.</p>
-                        
+
                         <div class="project-details">
                             <span><i class="fas fa-map-marker-alt"></i> Ribeirão Preto, SP</span>
                             <span><i class="fas fa-calendar-alt"></i> 6 meses</span>
                             <span><i class="fas fa-ruler-combined"></i>800 m²</span>
                         </div>
-                        
+
                         <!-- Miniaturas das fotos -->
                         <div class="project-thumbnails">
-                            <img src="assets/images/Ribeirão Preto/foto1.jpeg" 
-                                 alt="Foto 1" 
-                                 data-full="assets/images/Ribeirão Preto/foto2.jpeg">
-                            <img src="assets/images/Ribeirão Preto/foto2.jpeg" 
-                                 alt="Foto 2" 
-                                 data-full="assets/images/Ribeirão Preto/foto3.jpeg">
-                            <img src="assets/images/Ribeirão Preto/foto3.jpeg" 
-                                 alt="Foto 3">
+                            <img src="assets/images/Ribeirão Preto/foto1.jpeg" alt="Foto 1"
+                                data-full="assets/images/Ribeirão Preto/foto2.jpeg">
+                            <img src="assets/images/Ribeirão Preto/foto2.jpeg" alt="Foto 2"
+                                data-full="assets/images/Ribeirão Preto/foto3.jpeg">
+                            <img src="assets/images/Ribeirão Preto/foto3.jpeg" alt="Foto 3">
                         </div>
-                        
-                        <button class="view-photos-btn">
-                            <i class="fas fa-images"></i> Ver Fotos
-                        </button>
+                        <div class="project-buttons">
+                            <button class="view-photos-btn">
+                                <i class="fas fa-images"></i> Ver Fotos
+                            </button>
+                            <!-- Aqui vai o ID do seu vídeo -->
+                             <a href="https://www.youtube.com/watch?v=74b-euH6-cQ" 
+                                class="youtube-link-btn" 
+                                target="_blank" 
+                                rel="noopener noreferrer">
+                                    <i class="fab fa-youtube"></i> Ver Vídeo
+                            </a>
+                        </div>
                     </div>
                 </div>
-                
                 <!-- Projeto Pirinópolis -->
                 <div class="project-card" data-category="pirinopolis">
                     <div class="project-image">
-                        <img src="assets/images/Prefeitura Pirenópolis/foto1.jpeg" 
-                             alt="Escola Pública" 
-                             loading="lazy"
-                             class="main-image">
+                        <img src="assets/images/Prefeitura Pirenópolis/foto1.jpeg" alt="Escola Pública" loading="lazy"
+                            class="main-image">
                         <div class="project-badge">Prefeitura Pirinópolis</div>
+                         <!-- Botão YouTube flutuante -->
+                        <a href="https://youtube.com/shorts/SeBqQfrdXwc" 
+                        class="youtube-btn" 
+                        target="_blank" 
+                        rel="noopener noreferrer"
+                        title="Ver vídeo no YouTube (nova aba)">
+                            <i class="fab fa-youtube"></i>
+                        </a>
                     </div>
                     <div class="project-info">
                         <h3>Prefeitura de Pirinópolis</h3>
                         <p>Execução de faixa elevadas, execução de pedras nas ruas de Pirenópolis</p>
-                        
+
                         <div class="project-details">
                             <span><i class="fas fa-map-marker-alt"></i> Pirinópolis, GO</span>
                             <span><i class="fas fa-calendar-alt"></i> 3 meses</span>
                             <span><i class="fas fa-ruler-combined"></i> 2.500 m²</span>
                         </div>
-                        
+
                         <!-- Miniaturas das fotos -->
                         <div class="project-thumbnails">
-                            <img src="assets/images/Prefeitura Pirenópolis/foto1.jpeg" 
-                                 alt="Foto 1" 
-                                 data-full="assets/images/Prefeitura Pirenópolis/foto2.png">
-                            <img src="assets/images/Prefeitura Pirenópolis/foto2.png" 
-                                 alt="Foto 2" 
-                                 data-full="assets/images/Prefeitura Pirenópolis/foto3.png">
-                            <img src="assets/images/Prefeitura Pirenópolis/foto3.png" 
-                                 alt="Foto 3">
+                            <img src="assets/images/Prefeitura Pirenópolis/foto1.jpeg" alt="Foto 1"
+                                data-full="assets/images/Prefeitura Pirenópolis/foto2.png">
+                            <img src="assets/images/Prefeitura Pirenópolis/foto2.png" alt="Foto 2"
+                                data-full="assets/images/Prefeitura Pirenópolis/foto3.png">
+                            <img src="assets/images/Prefeitura Pirenópolis/foto3.png" alt="Foto 3">
                         </div>
-                        
-                        <button class="view-photos-btn">
-                            <i class="fas fa-images"></i> Ver Fotos
-                        </button>
+
+                       <div class="project-buttons">
+                            <button class="view-photos-btn">
+                                <i class="fas fa-images"></i> Ver Fotos
+                            </button>
+                            <!-- Aqui vai o ID do seu vídeo -->
+                             <a href="https://youtube.com/shorts/SeBqQfrdXwc" 
+                                class="youtube-link-btn" 
+                                target="_blank" 
+                                rel="noopener noreferrer">
+                                    <i class="fab fa-youtube"></i> Ver Vídeo
+                            </a>
+                        </div>
                     </div>
                 </div>
-                
+
                 <!-- Projeto Itarumã -->
                 <div class="project-card" data-category="itaruma">
                     <div class="project-image">
-                        <img src="assets/images/Prefeitura Itarumã/Foto1.jpeg" 
-                             alt="Reforma Predial" 
-                             loading="lazy"
-                             class="main-image">
+                        <img src="assets/images/Prefeitura Itarumã/Foto1.jpeg" alt="Reforma Predial" loading="lazy"
+                            class="main-image">
                         <div class="project-badge">Prefeitura Itarumã</div>
+                         <!-- Botão YouTube flutuante -->
+                        <a href="https://youtube.com/shorts/YH-4e16U1Fk?feature=share" 
+                        class="youtube-btn" 
+                        target="_blank" 
+                        rel="noopener noreferrer"
+                        title="Ver vídeo no YouTube (nova aba)">
+                            <i class="fab fa-youtube"></i>
+                        </a>
                     </div>
                     <div class="project-info">
                         <h3>Prefeitura de Itarumã</h3>
                         <p>Execução de calçada e meio fio e terraplenagem do solo. Prefeitura Itarumã Goiás</p>
-                        
+
                         <div class="project-details">
                             <span><i class="fas fa-map-marker-alt"></i> Itarumã, GO</span>
                             <span><i class="fas fa-calendar-alt"></i> 3 meses</span>
                             <span><i class="fas fa-ruler-combined"></i> 2.500 m²</span>
                         </div>
-                        
+
                         <!-- Miniaturas das fotos -->
                         <div class="project-thumbnails">
-                            <img src="assets/images/Prefeitura Itarumã/Foto1.jpeg" 
-                                 alt="Foto 1" 
-                                 data-full="assets/images/Prefeitura Itarumã/Foto2.jpeg">
-                            <img src="assets/images/Prefeitura Itarumã/Foto2.jpeg" 
-                                 alt="Foto 2" 
-                                 data-full="assets/images/Prefeitura Itarumã/Foto3.jpeg">
-                            <img src="assets/images/Prefeitura Itarumã/Foto3.jpeg" 
-                                 alt="Foto 3">
+                            <img src="assets/images/Prefeitura Itarumã/Foto1.jpeg" alt="Foto 1"
+                                data-full="assets/images/Prefeitura Itarumã/Foto2.jpeg">
+                            <img src="assets/images/Prefeitura Itarumã/Foto2.jpeg" alt="Foto 2"
+                                data-full="assets/images/Prefeitura Itarumã/Foto3.jpeg">
+                            <img src="assets/images/Prefeitura Itarumã/Foto3.jpeg" alt="Foto 3">
                         </div>
-                        
-                        <button class="view-photos-btn">
-                            <i class="fas fa-images"></i> Ver Fotos
-                        </button>
+
+                        <div class="project-buttons">
+                            <button class="view-photos-btn">
+                                <i class="fas fa-images"></i> Ver Fotos
+                            </button>
+                            <!-- Aqui vai o ID do seu vídeo -->
+                             <a href="https://youtube.com/shorts/YH-4e16U1Fk?feature=share" 
+                                class="youtube-link-btn" 
+                                target="_blank" 
+                                rel="noopener noreferrer">
+                                    <i class="fab fa-youtube"></i> Ver Vídeo
+                            </a>
+                        </div>
                     </div>
                 </div>
-                
+
+                  <!-- Projeto Marzagão -->
+                <div class="project-card" data-category="marzagao">
+                    <div class="project-image">
+                        <img src="assets/images/Marzagão/WhatsApp Image 2026-01-16 at 15.59.03 (1).jpeg" alt="Reforma Predial" loading="lazy"
+                            class="main-image">
+                        <div class="project-badge">Prefeitura Marzagão</div>
+                         <!-- Botão YouTube flutuante -->
+                        <a href="https://youtube.com/shorts/VbsUA98dIuc?feature=share" 
+                        class="youtube-btn" 
+                        target="_blank" 
+                        rel="noopener noreferrer"
+                        title="Ver vídeo no YouTube (nova aba)">
+                            <i class="fab fa-youtube"></i>
+                        </a>
+                    </div>
+                    <div class="project-info">
+                        <h3>Prefeitura de Marzagão</h3>
+                        <p>Construção salão de eventos pingo de gente,  mais 1.000 metros quadrado construído.</p>
+
+                        <div class="project-details">
+                            <span><i class="fas fa-map-marker-alt"></i> Marzagão, GO</span>
+                            <span><i class="fas fa-calendar-alt"></i> 3 meses</span>
+                            <span><i class="fas fa-ruler-combined"></i> 1.000 m²</span>
+                        </div>
+
+                        <!-- Miniaturas das fotos -->
+                        <div class="project-thumbnails">
+                            <img src="assets/images/Marzagão/WhatsApp Image 2026-01-16 at 15.59.03 (1).jpeg" alt="Foto 1"
+                                data-full="assets/images/Marzagão/WhatsApp Image 2026-01-16 at 15.59.03.jpeg">
+                            <img src="assets/images/Marzagão/WhatsApp Image 2026-01-16 at 15.59.03.jpeg" alt="Foto 2"
+                                data-full="assets/images/Marzagão/WhatsApp Image 2026-01-16 at 15.59.17.jpeg">
+                            <img src="assets/images/Marzagão/WhatsApp Image 2026-01-16 at 15.59.17.jpeg" alt="Foto 3">
+                        </div>
+
+                        <div class="project-buttons">
+                            <button class="view-photos-btn">
+                                <i class="fas fa-images"></i> Ver Fotos
+                            </button>
+                            <!-- Aqui vai o ID do seu vídeo -->
+                             <a href="https://youtube.com/shorts/VbsUA98dIuc?feature=share" 
+                                class="youtube-link-btn" 
+                                target="_blank" 
+                                rel="noopener noreferrer">
+                                    <i class="fab fa-youtube"></i> Ver Vídeo
+                            </a>
+                        </div>
+                    </div>
+                </div>
                 <!-- Adicione mais projetos conforme necessário -->
-                
+
             </div>
         </div>
     </section>
-    
+
     <!-- Modal Simples para Fotos -->
     <div class="photo-modal">
         <div class="modal-content">
@@ -224,7 +320,8 @@
                 <img src="" alt="" class="modal-image">
                 <button class="modal-nav prev-btn"><i class="fas fa-chevron-left"></i></button>
                 <button class="modal-nav next-btn"><i class="fas fa-chevron-right"></i></button>
-                <div class="image-counter"><span class="current-index">1</span> / <span class="total-images">3</span></div>
+                <div class="image-counter"><span class="current-index">1</span> / <span class="total-images">3</span>
+                </div>
             </div>
             <div class="modal-info">
                 <h3 class="modal-title"></h3>
@@ -232,8 +329,7 @@
             </div>
         </div>
     </div>
-    
-     <!-- CTA Final -->
+    <!-- CTA Final -->
     <section class="portfolio-cta">
         <div class="container">
             <div class="cta-content">
@@ -245,7 +341,7 @@
             </div>
         </div>
     </section>
-    
+
     <!-- Footer -->
     <footer class="footer">
         <div class="container">
@@ -265,7 +361,7 @@
                         <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
                     </div>
                 </div>
-                
+
                 <div class="footer-links">
                     <h4>Links rápidos</h4>
                     <ul>
@@ -277,7 +373,7 @@
                         <li><a href="index.html#contact">Contato</a></li>
                     </ul>
                 </div>
-                
+
                 <div class="footer-services">
                     <h4>Nossos serviços</h4>
                     <ul>
@@ -288,21 +384,23 @@
                         <li><a href="index.html#services">Infraestrutura</a></li>
                     </ul>
                 </div>
-                
+
                 <div class="footer-contact">
                     <h4>Contato</h4>
                     <ul>
-                        <li><i class="fas fa-map-marker-alt"></i> CBS 4 LT 3 Edifício Ouro Preto - Galeria Sala 5 - Brasília/DF</li>
+                        <li><i class="fas fa-map-marker-alt"></i> CBS 4 LT 3 Edifício Ouro Preto - Galeria Sala 5 -
+                            Brasília/DF</li>
                         <li><i class="fas fa-phone"></i> (61) 98408-6315</li>
                         <li><i class="fas fa-envelope"></i> dlengenhariaeireli25@hotmail.com</li>
                     </ul>
                 </div>
             </div>
-            
+
             <div class="footer-bottom">
                 <div class="footer-legal">
                     <p>DOIS IRMÃOS Importadora Ltda. | CNPJ: 42.893.478/0001-38</p>
-                    <p>&copy; <span id="currentYear"></span> Dois Irmãos Importadora LTDA. Todos os direitos reservados.</p>
+                    <p>&copy; <span id="currentYear"></span> Dois Irmãos Importadora LTDA. Todos os direitos reservados.
+                    </p>
                 </div>
                 <div class="footer-extras">
                     <a href="#">Política de Privacidade</a>
@@ -311,24 +409,24 @@
             </div>
         </div>
     </footer>
-    
+
     <!-- Back to Top Button -->
     <button id="backToTop" class="back-to-top" aria-label="Voltar ao topo">
         <i class="fas fa-chevron-up"></i>
     </button>
-    
+
     <!-- Botão WhatsApp -->
-    <a href="https://wa.me/556184086315?text=Olá! Gostaria de ver mais projetos do portfólio." 
-       class="whatsapp-btn" 
-       target="_blank" 
-       rel="noopener noreferrer"
-       aria-label="Conversar no WhatsApp">
+    <a href="https://wa.me/556184086315?text=Olá! Gostaria de ver mais projetos do portfólio." class="whatsapp-btn"
+        target="_blank" rel="noopener noreferrer" aria-label="Conversar no WhatsApp">
         <i class="fab fa-whatsapp"></i>
         <span class="whatsapp-tooltip"></span>
     </a>
-    
+
     <!-- JavaScript -->
-     <script src="assets/js/main.js"></script>
+    <script src="assets/js/main.js"></script>
     <script src="assets/js/portfolio.js"></script>
+
+
 </body>
+
 </html>
