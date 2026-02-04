@@ -1,4 +1,4 @@
-// Portfólio Simples - JavaScript
+// Portfólio Simples - JavaScript CORRIGIDO
 document.addEventListener('DOMContentLoaded', function() {
     // ========================================
     // 1. FILTRAGEM DE PROJETOS
@@ -8,15 +8,11 @@ document.addEventListener('DOMContentLoaded', function() {
     
     filterButtons.forEach(button => {
         button.addEventListener('click', function() {
-            // Remove active de todos os botões
             filterButtons.forEach(btn => btn.classList.remove('active'));
-            
-            // Adiciona active no botão clicado
             this.classList.add('active');
             
             const filter = this.getAttribute('data-filter');
             
-            // Filtra os projetos
             projectCards.forEach(card => {
                 if (filter === 'all' || card.getAttribute('data-category') === filter) {
                     card.style.display = 'block';
@@ -28,7 +24,7 @@ document.addEventListener('DOMContentLoaded', function() {
     });
     
     // ========================================
-    // 2. GALERIA DE FOTOS
+    // 2. GALERIA DE FOTOS (CORRIGIDA)
     // ========================================
     const viewPhotoButtons = document.querySelectorAll('.view-photos-btn');
     const thumbnails = document.querySelectorAll('.project-thumbnails img');
@@ -50,21 +46,32 @@ document.addEventListener('DOMContentLoaded', function() {
     let currentIndex = 0;
     let currentProject = null;
     
-    // Função para abrir galeria
+    // FUNÇÃO ABRIR GALERIA - VERSÃO FINAL CORRIGIDA
     function openGallery(projectCard) {
         currentProject = projectCard;
         
-        // Coletar todas as imagens do projeto
-        const mainImage = projectCard.querySelector('.main-image').src;
-        const thumbnailImages = projectCard.querySelectorAll('.project-thumbnails img');
+        // USAR APENAS AS MINIATURAS (já incluem a primeira foto)
+        const thumbnailImages = projectCard.querySelectorAll('.project-thumbnails img[data-full]');
         
-        currentImages = [mainImage];
+        // Resetar array
+        currentImages = [];
+        
+        // Adicionar cada miniatura UMA VEZ
         thumbnailImages.forEach(img => {
             const fullImage = img.getAttribute('data-full');
+            // Verificar se já não foi adicionada e se tem caminho
             if (fullImage && !currentImages.includes(fullImage)) {
                 currentImages.push(fullImage);
             }
         });
+        
+        // Se não encontrou imagens, usar a imagem principal
+        if (currentImages.length === 0) {
+            const mainImage = projectCard.querySelector('.main-image').src;
+            if (mainImage) {
+                currentImages.push(mainImage);
+            }
+        }
         
         // Informações do projeto
         const title = projectCard.querySelector('h3').textContent;
@@ -75,7 +82,7 @@ document.addEventListener('DOMContentLoaded', function() {
         modalDescription.textContent = description;
         totalImagesSpan.textContent = currentImages.length;
         
-        // Resetar índice
+        // Resetar índice e mostrar primeira imagem
         currentIndex = 0;
         updateModalImage();
         
@@ -104,12 +111,12 @@ document.addEventListener('DOMContentLoaded', function() {
             const projectCard = this.closest('.project-card');
             openGallery(projectCard);
             
-            // Encontra o índice da miniatura clicada
+            // Encontrar índice desta miniatura
             const thumbnailsInProject = projectCard.querySelectorAll('.project-thumbnails img');
             const clickedIndex = Array.from(thumbnailsInProject).indexOf(this);
             
             if (clickedIndex !== -1) {
-                currentIndex = clickedIndex + 1; // +1 porque a primeira imagem é a principal
+                currentIndex = clickedIndex;
                 updateModalImage();
             }
         });
@@ -178,23 +185,5 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
     
-    // ========================================
-    // 3. FUNCIONALIDADE EXTRAS
-    // ========================================
-    
-    // Tooltip simples para os botões do YouTube
-    const youtubeButtons = document.querySelectorAll('.youtube-btn, .youtube-link-btn');
-    
-    youtubeButtons.forEach(btn => {
-        btn.addEventListener('mouseenter', function() {
-            // Adiciona uma classe para efeito
-            this.classList.add('hover-effect');
-        });
-        
-        btn.addEventListener('mouseleave', function() {
-            this.classList.remove('hover-effect');
-        });
-    });
-    
-    console.log('Portfólio simples inicializado com sucesso!');
+    console.log('Portfólio corrigido inicializado com sucesso!');
 });
